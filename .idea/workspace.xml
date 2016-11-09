@@ -28,24 +28,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ArticleController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/ArticleController.class.php">
+      <file leaf-file-name="NestedSets.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/NestedSets.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.571428">
-              <caret line="133" column="52" selection-start-line="133" selection-start-column="52" selection-end-line="133" selection-end-column="52" />
+            <state vertical-scroll-proportion="-1.7142857">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <marker date="1478659654636" expanded="true" signature="2480:2508" placeholder="SELECT * FRO..." />
+                <marker date="1478659654636" expanded="true" signature="2806:2864" placeholder="SELECT * FRO..." />
+                <marker date="1478659654636" expanded="true" signature="3275:3335" placeholder="SELECT * FRO..." />
+                <marker date="1478659654636" expanded="true" signature="3734:3790" placeholder="SELECT * FRO..." />
+                <marker date="1478659654636" expanded="true" signature="4112:4158" placeholder="SELECT * FRO..." />
+                <marker date="1478659654636" expanded="true" signature="4839:4861" placeholder="SELECT MAX(?..." />
+                <marker date="1478659654636" expanded="true" signature="4954:4993" placeholder="SELECT ?F, ?..." />
+                <marker date="1478659654636" expanded="true" signature="5791:5812" placeholder="INSERT INTO ..." />
+                <marker date="1478659654636" expanded="true" signature="6193:6235" placeholder="DELETE FROM ..." />
+                <marker date="1478659654636" expanded="true" signature="7469:7491" placeholder="SELECT MAX(?..." />
+                <marker date="1478659654636" expanded="true" signature="12524:12567" placeholder="SELECT ?F, ?..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySQLORM.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/MySQLORM.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="4.5306125">
+              <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArticleModel.class.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Model/ArticleModel.class.php">
+      <file leaf-file-name="GoodsCategoryController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/GoodsCategoryController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3469388">
-              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+            <state vertical-scroll-proportion="-13.714286">
+              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/GoodsCategory/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.428572">
+              <caret line="11" column="50" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="50" />
               <folding>
-                <element signature="e#32#48#0#PHP" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/GoodsCategory/add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.285714">
+              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Orm.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/Orm.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.142858">
+              <caret line="129" column="56" selection-start-line="22" selection-start-column="4" selection-end-line="129" selection-end-column="56" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,12 +132,18 @@
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/ArticleCategory/add.html" />
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/ArticleCategory/index.html" />
-        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/Index/menu.html" />
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/Index/top.html" />
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/Article/index.html" />
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/Article/add.html" />
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/ArticleController.class.php" />
         <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/Model/ArticleModel.class.php" />
+        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/DbMysql.interface.php" />
+        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/NestedSets.class.php" />
+        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/MySQLORM.class.php" />
+        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/GoodsCategoryController.class.php" />
+        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/Index/menu.html" />
+        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/GoodsCategory/index.html" />
+        <option value="$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/GoodsCategory/add.html" />
       </list>
     </option>
   </component>
@@ -127,7 +187,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -226,7 +285,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoodsCategory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin.shop.cn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin.shop.cn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Logic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,6 +396,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,11 +414,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\www\shop\admin.shop.cn\Application\Admin\View\GoodsCategory" />
       <recent name="E:\www\shop\admin.shop.cn\Application\Admin\View" />
       <recent name="E:\www\shop\admin.shop.cn\Application\Admin\View\Article" />
       <recent name="E:\www\shop\admin.shop.cn\Application\Admin\View\ArticleCategory" />
       <recent name="E:\www\shop\admin.shop.cn\Public\js" />
-      <recent name="E:\www\shop\admin.shop.cn\Application\Admin\View\Brand" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\www\shop\admin.shop.cn\Application\Admin\Model" />
@@ -493,7 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-38.57143">
           <caret line="1060" column="9" selection-start-line="1060" selection-start-column="9" selection-end-line="1060" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -508,7 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="48.0">
           <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -547,13 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/Index/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.9795918">
-          <caret line="73" column="95" selection-start-line="73" selection-start-column="95" selection-end-line="73" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/ArticleCategory/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1836735">
@@ -586,7 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.857142">
           <caret line="27" column="109" selection-start-line="27" selection-start-column="109" selection-end-line="27" selection-end-column="109" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -594,7 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.79591835">
           <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -602,25 +707,92 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6989796">
           <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/ArticleController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.571428">
-          <caret line="133" column="52" selection-start-line="133" selection-start-column="52" selection-end-line="133" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Model/ArticleModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3469388">
-          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.59183675">
+          <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/ArticleController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2176871">
+          <caret line="133" column="52" selection-start-line="133" selection-start-column="52" selection-end-line="133" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/NestedSets.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7142857">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#32#48#0#PHP" expanded="true" />
+            <marker date="1478659654636" expanded="true" signature="2480:2508" placeholder="SELECT * FRO..." />
+            <marker date="1478659654636" expanded="true" signature="2806:2864" placeholder="SELECT * FRO..." />
+            <marker date="1478659654636" expanded="true" signature="3275:3335" placeholder="SELECT * FRO..." />
+            <marker date="1478659654636" expanded="true" signature="3734:3790" placeholder="SELECT * FRO..." />
+            <marker date="1478659654636" expanded="true" signature="4112:4158" placeholder="SELECT * FRO..." />
+            <marker date="1478659654636" expanded="true" signature="4839:4861" placeholder="SELECT MAX(?..." />
+            <marker date="1478659654636" expanded="true" signature="4954:4993" placeholder="SELECT ?F, ?..." />
+            <marker date="1478659654636" expanded="true" signature="5791:5812" placeholder="INSERT INTO ..." />
+            <marker date="1478659654636" expanded="true" signature="6193:6235" placeholder="DELETE FROM ..." />
+            <marker date="1478659654636" expanded="true" signature="7469:7491" placeholder="SELECT MAX(?..." />
+            <marker date="1478659654636" expanded="true" signature="12524:12567" placeholder="SELECT ?F, ?..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/Orm.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.142858">
+          <caret line="129" column="56" selection-start-line="22" selection-start-column="4" selection-end-line="129" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/Index/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.571428">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/GoodsCategory/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.428572">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/View/GoodsCategory/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.285714">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Controller/GoodsCategoryController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.714286">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.shop.cn/Application/Admin/Logic/MySQLORM.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.5306125">
+          <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
