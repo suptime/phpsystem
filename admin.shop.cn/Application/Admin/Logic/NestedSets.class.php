@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Class for managing DB Tree
  *
@@ -85,7 +85,7 @@ class NestedSets {
 	 *
 	 * @return void
 	 */
-	public function __construct(\MediaCore\Lib\Db\Db $Db, $table_name, $left_key = null, $right_key = null, $parent_key = null, $primary_key = null, $level_key = null) {
+	public function __construct(Orm $Db, $table_name, $left_key = null, $right_key = null, $parent_key = null, $primary_key = null, $level_key = null) {
 		$this->Db = $Db;
 		$this->tableName = $table_name;
 		if ($left_key !== null) { $this->leftKey = $left_key; }

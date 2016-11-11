@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * MySQL DB connection interface
  *
@@ -12,7 +12,7 @@
 
 namespace Admin\Logic;
 
-interface  DbMysql {
+interface  Orm {
 	/**
 	 * DB connect
 	 *
