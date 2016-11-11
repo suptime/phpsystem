@@ -82,6 +82,13 @@ text-decoration:none;}
                     <li class="menu-item"><a href="userMessage.html" target="main-frame">会员留言</a></li>
                 </ul>
             </li>
+            <li class="explode" key="08_members" name="menu">
+                后台用户管理
+                <ul>
+                    <li class="menu-item"><a href="<?php echo U('Admin/index');?>" target="main-frame">账号列表</a></li>
+                    <li class="menu-item"><a href="<?php echo U('Admin/add');?>" target="main-frame">添加账号</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div id="help-div" style="display:none">
