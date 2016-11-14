@@ -38,7 +38,9 @@ class UploadController extends Controller
         //开始上传文件
         $fileInfos = $uploads->upload();
         //获得一维数组
-        $fileInfos = $fileInfos['Filedata'];
+//        $fileInfos = $fileInfos['Filedata'];
+        //弹出上传后的一组数据
+        $fileInfos = array_pop($fileInfos);
         //上传数据
         if (!$fileInfos) {
             $status = false;

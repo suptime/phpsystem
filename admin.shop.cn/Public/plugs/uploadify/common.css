@@ -50,6 +50,7 @@
 }
 .upload-img-box {
 	margin-top: 4px;
+	overflow: hidden;
 }
 .upload-img-box .upload-pre-item {
 	padding: 1px;
@@ -106,4 +107,46 @@
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: 5px
+}
+.upload-pre-item-gallery{
+	position: relative;
+	width: 170px;
+	height: 110px;
+	overflow: hidden;
+	margin: 0 5px 5px 0;
+	background-color: #eee;
+}
+.upload-pre-item-gallery img{
+	width: 100%;
+}
+
+.upload-pre-item-gallery{
+	display:inline-block;
+	overflow: hidden;
+}
+
+.upload-pre-item-gallery a{
+	font-family: '宋体';
+	position:absolute;
+	top:10px;
+	right:10px;
+	color:#fff;
+	font-size:12px;
+	height: 16px;
+	line-height: 16px;
+	width: 16px;
+	border-radius: 100%;
+	text-align: center;
+	text-decoration:none;
+	background-color: #333;
+	z-index: 1000;
+}
+
+.ztree {
+	margin-top: 10px;
+	border: 1px solid #617775;
+	background: #f0f6e4;
+	width: 220px;
+	overflow-y: scroll;
+	overflow-x: auto;
 }

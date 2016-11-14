@@ -3,6 +3,7 @@
 namespace Admin\Model;
 
 
+use Org\Util\String;
 use Think\Model;
 use Think\Page;
 
@@ -16,7 +17,7 @@ class AdminModel extends Model
     protected $_validate = array(
         //array(验证字段1,验证规则,错误提示,[验证条件,附加规则,验证时间]),
         array('username','require','用户名不能为空','','',self::MODEL_INSERT),
-        array('username','verifyUserName','用户名已存在','','callback',self::MODEL_INSERT),
+        array('username','verifyUserName','用户名已存在','','callback','reg'),
         array('email','require','邮箱不能为空'),
         array('email','email','邮箱格式不正确'),
         array('email','verifyEmail','邮箱已存在',self::MUST_VALIDATE,'callback'),
@@ -73,18 +74,23 @@ class AdminModel extends Model
         $this->data['password'] = $arr['password'];
         $this->data['salt'] = $arr['salt'];
 
-        $this->data['token'] = md5(substr($arr['password'].$this->data['username'],0,10));      //token
-        $this->data['token_create_time'] = NOW_TIME;        //token生成时间
+        $tokenData = $this->_createToken();  //生成token
+        $this->data['token'] = $tokenData['token'];
+        $this->data['token_create_time'] = $tokenData['token_create_time'];
 
+        //添加管理员到数据表
         return $this->add();
     }
 
-
+    /**
+     * 修改管理员
+     * @return bool
+     */
     public function saveAdmin(){
         //移除用户名
         unset($this->data['username']);
         $newPassword = $this->data['password'];
-
+        //判断用户是否输入了新密码
         if ($newPassword) {
             $arr = $this->createSaltStr($newPassword);
             $password = $arr['password'];
@@ -93,6 +99,7 @@ class AdminModel extends Model
             $this->data['password'] = $password;
             $this->data['salt'] = $salt;
         }else{
+            //用户未填写修改密码,删除password字段
             unset($this->data['password']);
         }
 
@@ -109,10 +116,13 @@ class AdminModel extends Model
      * @param $password     用户填写的密码字符串
      * @return array   返回一个一维数组
      */
-    private function createSaltStr($password){
-        $str = '1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
-        $shuffle_str = str_shuffle($str);
-        $salt = substr($shuffle_str,5,6);     //6位加盐字符串
+    private function createSaltStr($password,$salt=''){
+        if (empty($salt)) {
+            $str = '1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
+            $shuffle_str = str_shuffle($str);
+            $salt = substr($shuffle_str,5,6);     //6位加盐字符串
+        }
+        //返回加密后的密码和随机字符串
         return array(
             'salt'=>$salt,
             'password'=>md5(md5($password) . md5($salt))
@@ -156,4 +166,98 @@ class AdminModel extends Model
         }
         return true;
     }
+
+
+    /**
+     * 管理员登陆
+     */
+    public function adminLogin(){
+        $username = $this->data['username'];
+        $passowrd = $this->data['password'];
+        //查询出登陆用户数据
+        if (!($admin = $this->getByUsername($username))) {
+            return false;
+        }
+
+        //返回密码和盐的数组
+        $login_password = $this->createSaltStr($passowrd,$admin['salt']);
+
+        //如果密码不相等
+        if ($login_password['password'] !== $admin['password']) {
+            //var_dump($login_password,$admin['password']);die;
+            return false;
+        }
+        //生成session
+        session('USERINFO',$admin);
+
+        //判断是否勾选了remember
+        if (I('post.remember')) {
+            $remember = true;
+        }
+        //生成cookie和token
+        $tokenData = $this->_createToken($admin,$remember);
+        //获得最后登陆时间ip的数据
+        $data = array(
+            'id'=>$admin['id'],
+            'last_login_time'=>NOW_TIME,
+            'last_login_ip'=>get_client_ip(),
+        );
+
+        //修改最后登陆时间和登陆ip
+        $this->save($data);
+        return true;
+    }
+
+    /**
+     * 生成token和cookie
+     * @return array
+     */
+    private function _createToken($admin,$remember=false){
+        //生成token
+        $token = String::randString(32);
+        $token_create_time = NOW_TIME;  //token生成时间
+
+        //token数据
+        $tokenData = array(
+            'id'=>$admin['id'],
+            'token' => $token,
+            'token_create_time' => $token_create_time
+        );
+
+        //判断remember是否勾选
+        if ($remember) {
+            //生成cookie
+            cookie('ADMIN_LOGIN_INFO',$tokenData,60*60*24+NOW_TIME);
+        }
+
+        //保存新token到数据库
+        $this->save($tokenData);
+    }
+
+    /**
+     * 自动登陆方法
+     * @return bool 布尔值
+     */
+    public function autoLogin()
+    {
+        //获取cookie
+        $cookie = cookie('ADMIN_LOGIN_INFO');
+        //cookie如果不存在,返回false
+        if(!$cookie){
+            return false;
+        }
+        //根据cookie作为查询条件获取符合条件的数据
+        $admin = $this->where($cookie)->find();
+        //如果没有获取到数据,返回false
+        if (!$admin) {
+            return false;
+        }
+        //更新token令牌
+        $this->_createToken($admin);
+        //重新生成session
+        session('USERINFO',$admin);
+        //返回执行结果
+        return true;
+    }
+
 }

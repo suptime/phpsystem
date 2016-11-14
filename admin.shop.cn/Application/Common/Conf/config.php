@@ -18,6 +18,8 @@ return array(
     'URL_MODEL'             =>  2,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
     // 0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式
 
+    'COOKIE_PREFIX'         =>  'COOKIE_PREFIX_',   //cookie前缀
+
     //静态资源默认地址
     'TMPL_PARSE_STRING' => array(
         '__CSS__' => 'http://admin.shop.cn/Public/css',
@@ -25,7 +27,8 @@ return array(
         '__JS__' => 'http://admin.shop.cn/Public/js',
         '__UPLOADIFY__' => 'http://admin.shop.cn/Public/plugs/uploadify',
         '__LAYER__' => 'http://admin.shop.cn/Public/plugs/layer',
-        '__UEDITER__' => 'http://admin.shop.cn/Public/plugs/uediter',
+        '__UEDITOR__' => 'http://admin.shop.cn/Public/plugs/uediter',
+        '__ZTREE__' => 'http://admin.shop.cn/Public/plugs/ztree',
     ),
 
     //分页数据

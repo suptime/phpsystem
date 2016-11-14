@@ -36,4 +36,12 @@ class BrandModel extends Model
         //返回数据
         return $data;
     }
+
+    /**
+     * 获取所有可用的的品牌.
+     * @return array
+     */
+    public function getAllBrand() {
+        return $this->where(['status'=>1])->order('sort')->select();
+    }
 }

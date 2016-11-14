@@ -28,7 +28,7 @@
             </tr>
 
             <?php if(is_array($rows)): foreach($rows as $key=>$row): ?><tr align="center" class="0">
-                    <td align="left" width=20%"><?php echo str_repeat('&nbsp;',($row['level']-1)*5);?><img src="http://admin.shop.cn/Public/images/menu_arrow.gif" width="9" height="9" border="0" style="margin-left:0em" /> <?php echo ($row["name"]); ?></td>
+                    <td align="left" width=20%"><?php echo str_repeat('&nbsp;',($row['level']-1)*5);?><img src="http://admin.shop.cn/Public/images/menu_arrow.gif" width="9" height="9" border="0" style="margin-left:0em" />  <a href="<?php echo U('Goods/index',array('goods_category_id'=>$row['id']));?>"><?php echo ($row["name"]); ?></a> </td>
                     <td width="10%"><?php if($row["parent_id"] == 0): ?>无<?php else: echo ($row["parent_id"]); endif; ?></td>
                     <td width="15%"><?php echo ($row["intro"]); ?></td>
                     <td width="10%"><img src="http://admin.shop.cn/Public/images/<?php echo ($row["is_nav"]); ?>.gif" /> </td>

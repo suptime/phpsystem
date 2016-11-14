@@ -83,10 +83,10 @@ text-decoration:none;}
                 </ul>
             </li>
             <li class="explode" key="08_members" name="menu">
-                后台用户管理
+                管理员管理
                 <ul>
-                    <li class="menu-item"><a href="<?php echo U('Admin/index');?>" target="main-frame">账号列表</a></li>
-                    <li class="menu-item"><a href="<?php echo U('Admin/add');?>" target="main-frame">添加账号</a></li>
+                    <li class="menu-item"><a href="<?php echo U('Admin/index');?>" target="main-frame">管理员列表</a></li>
+                    <li class="menu-item"><a href="<?php echo U('Admin/add');?>" target="main-frame">添加管理员</a></li>
                 </ul>
             </li>
         </ul>

@@ -39,7 +39,7 @@
         </ul>
         <div id="send_info">
             <a href="#" target="main-frame" class="fix-submenu">清除缓存</a>
-            <a href="<?php echo U('User/logout');?>" target="_top" class="fix-submenu">退出</a>
+            <a href="<?php echo U('Admin/logout');?>" target="_top" class="fix-submenu">退出</a>
         </div>
     </div>
 </div>

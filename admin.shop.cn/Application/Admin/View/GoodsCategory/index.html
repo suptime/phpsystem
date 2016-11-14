@@ -29,7 +29,7 @@
 
             <foreach name="rows" item="row">
                 <tr align="center" class="0">
-                    <td align="left" width=20%">{:str_repeat('&nbsp;',($row['level']-1)*5)}<img src="__IMG__/menu_arrow.gif" width="9" height="9" border="0" style="margin-left:0em" /> {$row.name}</td>
+                    <td align="left" width=20%">{:str_repeat('&nbsp;',($row['level']-1)*5)}<img src="__IMG__/menu_arrow.gif" width="9" height="9" border="0" style="margin-left:0em" />  <a href="{:U('Goods/index',array('goods_category_id'=>$row['id']))}">{$row.name}</a> </td>
                     <td width="10%"><if condition="$row.parent_id eq 0">无<else />{$row.parent_id}</if></td>
                     <td width="15%">{$row.intro}</td>
                     <td width="10%"><img src="__IMG__/{$row.is_nav}.gif" /> </td>
