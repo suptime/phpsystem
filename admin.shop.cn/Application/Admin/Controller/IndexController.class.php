@@ -16,10 +16,13 @@ class IndexController extends Controller
     }
 
     public function top(){
+        $adminInfo = session('ADMIN_INFO');
+        $this->assign('admin',$adminInfo);
         $this->display();
     }
 
     public function menu(){
+        $this->assign('menus',D('Menu')->getlist());
         $this->display();
     }
 

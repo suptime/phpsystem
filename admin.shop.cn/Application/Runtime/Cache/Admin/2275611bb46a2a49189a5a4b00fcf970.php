@@ -1,0 +1,38 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>管理员登陆</title>
+<style>
+*{margin: 0;padding: 0; font-size: 14px; font-family: 'Microsoft yahei','Microsoft Sans Serif' , Arial, Helvetica, Verdana;}
+body{background: #f6f6f6;}
+form{display: block; width: 242px; margin: 200px auto 0;}
+h2{font-size: 20px; font-weight: normal; color: #666; padding-bottom: 15px; text-align: center;text-shadow: 1px 1px 1px #fff;}
+p{position: relative; margin: 0 20px;}
+input.put{padding: 3px 10px; width: 180px; line-height: 26px; height: 26px; border: 1px solid #ccc; border-bottom: 0;outline: none}
+input.put:focus{box-shadow: inset 1px 1px 6px #eee;}
+input.name{ border-radius:5px 5px 0 0; }
+input.yzm{ border-radius:0 0 5px 5px; border-bottom: 1px solid #ccc;text-transform:uppercase}
+img{ display: block; position: absolute; right: 4px; top: 4px; border-radius:3px; }
+.cookie{ padding: 13px 0;}
+.cookie label{ font-size: 14px;}
+.submit{ width: 100%; height: 30px; line-height:30px; background: #0069cd; border: 0; color: #fff; cursor: pointer;border-radius: 3px; text-shadow: 1px 1px #000}
+</style>
+</head>
+<body>
+
+<form action="<?php echo U();?>" method="post">
+    <h2>商城后台登录</h2>
+    <p><input class="put name" type="text" name="username" placeholder="用户名" /></p>
+    <p><input class="put" type="password" name="password" placeholder="密码" /></p>
+    <p><input class="put yzm capital" type="text" maxlength="4" name="captcha" placeholder="验证码" />
+        <img src="<?php echo C('SITE_URL'); echo U('Captcha/code');?>" onclick="this.src='<?php echo C('SITE_URL'); echo U('Captcha/code');?>'" width="85" height="26" /></p>
+    <p class="cookie">
+        <label><input type="checkbox" value="1" name="remember" id="remember" /> 是否保存当前登录状态</label>
+    </p>
+    <p>
+        <input class="submit" type="submit" value="登 录" />
+    </p>
+</form>
+</body>
+</html>

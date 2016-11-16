@@ -9,12 +9,14 @@
 <link href="__UPLOADIFY__/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1>
-    <span class="action-span"><a href="{:U('index')}">用户列表</a></span>
-    <span class="action-span1"><a href="#">管理中心</a></span>
-    <span id="search_id" class="action-span1"> - 添加账号 </span>
-    <div style="clear:both"></div>
-</h1>
+<if condition="$id eq 1">
+    <h1>
+        <span class="action-span"><a href="{:U('index')}">用户列表</a></span>
+        <span class="action-span1"><a href="#">管理中心</a></span>
+        <span id="search_id" class="action-span1"> - 添加账号 </span>
+        <div style="clear:both"></div>
+    </h1>
+</if>
 <div class="main-div">
     <form method="post" action="{:U()}">
         <table cellspacing="1" cellpadding="3" width="100%">
@@ -43,14 +45,16 @@
                     <input type="password" name="repassword" size="27" />
                 </td>
             </tr>
-            <tr>
-                <td class="label">用户角色</td>
-                <td>
-                    <foreach name="roles" item="val">
-                        <label><input type="checkbox" name="role_id[]" class="admin_role" value="{$val.id}" <if condition="in_array($val['id'],$roleCurrent)">checked="checked"</if> /> {$val.name}</label>
-                    </foreach>
-                </td>
-            </tr>
+            <if condition="$id eq 1">
+                <tr>
+                    <td class="label">用户角色</td>
+                    <td>
+                        <foreach name="roles" item="val">
+                            <label><input type="checkbox" name="role_id[]" class="admin_role" value="{$val.id}" <if condition="in_array($val['id'],$roleCurrent)">checked="checked"</if> /> {$val.name}</label>
+                        </foreach>
+                    </td>
+                </tr>
+            </if>
             <tr>
                 <td colspan="2" align="center"><br />
                     <input type="submit" class="button" value=" 确定 " />
@@ -62,7 +66,6 @@
 </div>
 
 <div id="footer">
-<br />
-版权所有 &copy; 2016</div>
+版权所有 &copy; {:date('Y-m-d h:i:s',NOW_TIME)}</div>
 </body>
 </html>

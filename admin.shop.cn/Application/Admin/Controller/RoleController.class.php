@@ -9,11 +9,15 @@ class RoleController extends Controller
 {
     //实例化的Role对象
     private $_model;
+
     //初始化model
     protected function _initialize(){
         $this->_model = D('Role');
     }
 
+    /**
+     * 角色列表页
+     */
     public function index(){
         //获取搜索关键字
         $keyword = trim(I('get.keyword'));
@@ -42,11 +46,11 @@ class RoleController extends Controller
         if (IS_POST) {
             //收集数据
             if ($this->_model->create() == false) {
-                $this->error(get_error(get_error($this->_model)));
+                $this->error(get_error($this->_model));
             }
             //添加角色
             if ($this->_model->addRole() == false) {
-                $this->error(get_error(get_error($this->_model)));
+                $this->error(get_error($this->_model));
             }
             //成功跳转
             $this->success('添加角色成功',U('index'));

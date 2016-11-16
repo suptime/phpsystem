@@ -16,7 +16,6 @@ a:active { color: #EB8A3D; text-decoration: underline;}
 .clear { clear: both; float: none; font-size: 0px; margin: 0; padding: 0; display: block;}
 .nowrap { white-space: nowrap;}
 
-
 #header-div { background:#278296; border-bottom:1px solid #FFF;}
 #logo-div { height:50px; float:left;}
 #submenu-div { height:50px;}
@@ -36,4 +35,8 @@ a:active { color: #EB8A3D; text-decoration: underline;}
 #menu-div li.fix-spacer{border-right:none;}
 #send_info { padding:5px 30px 0 0; clear:right; text-align:right; color:#FF9900; width:40%; float:right;  }
 
+.error_msg{background:#DDEEF2; color: #333; font-size:14px;}
+.error_msg .box_border{margin:180px auto 0;text-align:center;width:400px; padding:20px 0;border:1px solid #80bdcb; background:#fff;}
+.error_msg .box_border h1{font-family:Arial,微软雅黑;font-size:22px; font-weight: 100; color:#000; line-height: 36px;}
 
+.item_list p{ margin: 15px 0 5px; background-color: #f5f5f5; line-height: 20px;}

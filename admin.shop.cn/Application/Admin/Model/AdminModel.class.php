@@ -262,8 +262,11 @@ class AdminModel extends Model
             //var_dump($login_password,$admin['password']);die;
             return false;
         }
+
         //生成session
         session('ADMIN_INFO',$admin);
+        //生成权限session
+        $this->_getPermissions();
 
         //判断是否勾选了remember
         if (I('post.remember')) {
@@ -331,6 +334,8 @@ class AdminModel extends Model
         $this->_createToken($admin);
         //重新生成session
         session('ADMIN_INFO',$admin);
+        //生成权限session
+        $this->_getPermissions();
         //返回执行结果
         return true;
     }

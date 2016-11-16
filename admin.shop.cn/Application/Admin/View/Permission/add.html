@@ -33,7 +33,7 @@
         <tr>
             <td class="label">上级权限:</td>
             <td>
-                <select name="parent_id">
+                <select name="parent_id" id="parent_id">
                     <foreach name="permissions" item="v">
                         <option value="{$v.id}" <if condition="$v.id eq $row['parent_id']"> selected="selected" class="curr"</if>>{:str_repeat('&nbsp;',$v['level']*2)}{$v.name}</option>
                     </foreach>
@@ -56,42 +56,25 @@
 </div>
 
 <div id="footer">
-<br />
-版权所有 &copy; 2016
+版权所有 &copy; {:date('Y-m-d h:i:s',NOW_TIME)}
 </div>
 
 <script type="text/javascript" src="__JS__/jquery.min.js"></script>
-<script type="text/javascript" src="__ZTREE__/jquery.ztree.core.min.js"></script>
 <script type="text/javascript">
-$(function() {
-    //复选框选中
-    $('#parent_id').val([{$row.parent_id}]);
-});
-//ztree设置
-var setting = {
-    data: {
-        simpleData: {
-            enable: true,
-            pIdKey:'parent_id',
+    $(function(){
+        changeInput();
+        $('#parent_id').change(function(){ changeInput() });
+
+        //input状态设置
+        function changeInput(){
+            var pid = $('#parent_id').find('option:selected').val();
+            if(pid == 0){
+                $("input[name='path']").prop('disabled',true);
+            }else{
+                $("input[name='path']").prop('disabled',false);
+            }
         }
-    },
-    callback:{
-        onClick:function(event,id,node){
-            $('#parent_id').val(node.id);
-        },
-    },
-};
-//ztree输出数据
-var zNodes = {$permissions};
-$(document).ready(function() {
-    var ztree_obj = $.fn.zTree.init($("#parent_nodes"), setting, zNodes);
-    ztree_obj.expandAll(true);
-    <present name="row">
-        //判断是否是编辑,并回显数据
-        var parent_node = ztree_obj.getNodeByParam('id',{$row.parent_id});
-        ztree_obj.selectNode(parent_node);
-    </present>
-});
+    });
 </script>
 </body>
 </html>

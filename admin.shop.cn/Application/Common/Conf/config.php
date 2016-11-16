@@ -48,4 +48,21 @@ return array(
         'fontttf'   =>  '4.ttf',
     ),
 
+    //已登陆的后台用户公共页面白名单
+    'LOGIN_BEFORE_ADMIN' => array(
+        'Admin/Index/index',
+        'Admin/Index/top',
+        'Admin/Index/menu',
+        'Admin/Index/main',
+        'Admin/Admin/logout',
+        'Admin/Admin/edit',
+        'Admin/Upload/upload',
+    ),
+
+    //后台公共可访问页面白名单
+    'LOGIN_AFTER_ADMIN' => array(
+        'Admin/Admin/login',
+        'Admin/Captcha/code',
+    ),
+
 );

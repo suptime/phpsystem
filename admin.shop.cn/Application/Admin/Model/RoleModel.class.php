@@ -8,6 +8,13 @@ use Think\Page;
 
 class RoleModel extends Model
 {
+    //开启批量验证
+    protected $patchValidate = true;
+
+    //开启自动验证
+    protected $_validate = array(
+        array('name','require','角色名称不能为空！'),
+    );
 
     /**
      * 获取角色列表数据
