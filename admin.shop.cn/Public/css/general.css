@@ -1,63 +1,39 @@
-/*
-$Id: general.css 13504 2007-11-08 09:51:13Z weberliu $
-*/
+body { margin: 0px; padding: 0px; color: #192E32; font: 12px "sans-serif", "Arial", "Verdana";}
+p, td, div { font: 12px "sans-serif", "Arial", "Verdana";}
+th { font: 12px "sans-serif", "Arial", "Verdana"; font-weight: bold;}
+form { margin: 0px; padding: 0px;}
+input, textarea, select { font: 12px "courier new";}
+input[type=text],input[type=password], textarea, select {padding: 2px 4px; line-height: 16px; border: 1px solid #aaa; border-color: #aaa #ddd #ddd #aaa}
+select .curr{ background-color: #80BDCB; color: #fff}
 
-body {
-    margin: 0px;
-    padding: 0px;
-    color: #192E32;
-    font: 12px "sans-serif", "Arial", "Verdana";
-}
+.main-div input[type=submit],.main-div input[type=reset],.main-div input[type=button]{background: #DDEEF2; border: 1px solid #5fa6b6; padding: 3px 10px; text-align: center; cursor: pointer;}
 
-p, td, div {
-    font: 12px "sans-serif", "Arial", "Verdana";
-}
+a:visited { color: #335B64; text-decoration: none;}
+a:link { color: #335B64; text-decoration: none;}
+a:hover { color: #EB8A3D; text-decoration: underline;}
+a:active { color: #EB8A3D; text-decoration: underline;}
 
-th {
-    font: 12px "sans-serif", "Arial", "Verdana";
-    font-weight: bold;
-}
+.clear { clear: both; float: none; font-size: 0px; margin: 0; padding: 0; display: block;}
+.nowrap { white-space: nowrap;}
 
-form {
-    margin: 0px;
-    padding: 0px;
-}
 
-input, textarea, select {
-    font: 12px "courier new";
-}
-
-a:visited {
-    color: #335B64;
-    text-decoration: none;
-}
-
-a:link {
-    color: #335B64;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #EB8A3D;
-    text-decoration: underline;
-}
-
-a:active {
-    color: #EB8A3D;
-    text-decoration: underline;
-}
-
-.clear {
-    clear: both;
-    float: none;
-    font-size: 0px;
-    margin: 0;
-    padding: 0;
-    display: block;
-}
-
-.nowrap {
-    white-space: nowrap;
-}
+#header-div { background:#278296; border-bottom:1px solid #FFF;}
+#logo-div { height:50px; float:left;}
+#submenu-div { height:50px;}
+#submenu-div ul { margin:3px 20px 0 0; padding:0; float:right; list-style-type:none;}
+#submenu-div li { float:left; padding:0 10px; margin:3px 0; border-right:1px solid #FFF;}
+#submenu-div a:visited, #submenu-div a:link { color:#FFF; text-decoration:none;}
+#submenu-div a:hover { color:#F5C29A;}
+#loading-div { clear:right; text-align:right; display:block;}
+#menu-div { background:#80BDCB; font-weight:bold; height:24px; line-height:24px;}
+#menu-div ul { margin:0; padding:0; list-style-type:none;}
+#menu-div li { float:left; border-right:1px solid #192E32; border-left:1px solid #BBDDE5;}
+#menu-div a:visited, #menu-div a:link { display:block; padding:0 20px; text-decoration:none; color:#335B64; background:#9CCBD6;}
+#menu-div a:hover { color:#000; background:#80BDCB;}
+#submenu-div a.fix-submenu{clear:both; margin-left:5px; padding:1px 5px; background:#DDEEF2; color:#278296;}
+#submenu-div a.fix-submenu:hover{padding:1px 5px; background:#FFF; color:#278296;}
+#menu-div li.fix-spacel{width:30px; border-left:none;}
+#menu-div li.fix-spacer{border-right:none;}
+#send_info { padding:5px 30px 0 0; clear:right; text-align:right; color:#FF9900; width:40%; float:right;  }
 
 

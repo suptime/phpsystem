@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>管理中心 - 添加角色 </title>
+<meta name="robots" content="noindex, nofollow"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="__CSS__/general.css" rel="stylesheet" type="text/css"/>
+<link href="__CSS__/main.css" rel="stylesheet" type="text/css"/>
+<link href="__UPLOADIFY__/common.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>
+<span class="action-span"><a href="{:U('index')}">角色列表</a></span>
+<span class="action-span1"><a href="#">管理中心</a></span>
+<span id="search_id" class="action-span1"> - 添加角色 </span>
+</h1>
+<div style="clear:both"></div>
+<div class="main-div">
+<form method="post" action="{:U()}">
+    <style>td.label{width: 15%;}</style>
+    <table cellspacing="1" cellpadding="3" width="100%">
+        <tr>
+            <td class="label">角色名称</td>
+            <td>
+                <input type="text" name="name" value="{$row.name}"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">描述</td>
+            <td>
+                <textarea name="intro" style="resize: none" cols="60" rows="3">{$row.intro}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">权限</td>
+            <td class="permission_td">
+                <div>
+                <foreach name="permissions" item="per">
+                    <if condition="$per.level eq 1">
+                        </div>
+
+                        <label class="top_checkbox" style="display: block; background:#eee; padding: 5px 10px; margin: 5px 0">{$per.name}</label>
+                        <div class="permission_item">
+                        <else />
+
+                        <label><input class="check_box" type="checkbox" value="{$per.id}" name="permission_id[]" <if condition="in_array($per['id'],$permissionCurrent)">checked="checked"</if> /> {$per.name}</label>
+                    </if>
+                </foreach>
+                            </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><br/>
+                <input type="hidden" name="id" value="{$row.id}"/>
+                <input type="submit" class="button" value=" 确定 "/>
+                <input type="reset" class="button" value=" 重置 "/>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+
+<div id="footer">
+<br/>
+版权所有 &copy; 2016
+</div>
+</body>
+</html>

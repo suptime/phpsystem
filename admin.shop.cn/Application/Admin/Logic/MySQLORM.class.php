@@ -5,24 +5,12 @@ namespace Admin\Logic;
 class MySQLORM implements Orm
 {
     public function connect(){
-        echo '<pre>';
-        echo __METHOD__ . '<br />';
-        var_dump(func_get_args());
-        echo '<hr />';
     }
 
     public function disconnect(){
-        echo '<pre>';
-        echo __METHOD__ . '<br />';
-        var_dump(func_get_args());
-        echo '<hr />';
     }
 
     public function free($result){
-        echo '<pre>';
-        echo __METHOD__ . '<br />';
-        var_dump(func_get_args());
-        echo '<hr />';
     }
 
     /**
@@ -49,24 +37,12 @@ class MySQLORM implements Orm
     }
 
     public function update($sql, array $args = array()){
-        echo '<pre>';
-        echo __METHOD__ . '<br />';
-        var_dump(func_get_args());
-        echo '<hr />';
     }
 
     public function getAll($sql, array $args = array()){
-        echo '<pre>';
-        echo __METHOD__ . '<br />';
-        var_dump(func_get_args());
-        echo '<hr />';
     }
 
     public function getAssoc($sql, array $args = array()){
-        echo '<pre>';
-        echo __METHOD__ . '<br />';
-        var_dump(func_get_args());
-        echo '<hr />';
     }
 
     /**
@@ -82,10 +58,6 @@ class MySQLORM implements Orm
     }
 
     public function getCol($sql, array $args = array()){
-        echo '<pre>';
-        echo __METHOD__ . '<br />';
-        var_dump(func_get_args());
-        echo '<hr />';
     }
 
     /**

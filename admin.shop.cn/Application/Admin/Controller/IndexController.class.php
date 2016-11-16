@@ -5,7 +5,8 @@ namespace Admin\Controller;
 use Think\Controller;
 
 
-class IndexController extends Controller {
+class IndexController extends Controller
+{
 
     /**
      * 后台首页视图
@@ -14,5 +15,16 @@ class IndexController extends Controller {
         $this->display();
     }
 
+    public function top(){
+        $this->display();
+    }
+
+    public function menu(){
+        $this->display();
+    }
+
+    public function main(){
+        $this->display();
+    }
 
 }

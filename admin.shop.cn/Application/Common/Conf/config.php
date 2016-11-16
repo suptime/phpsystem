@@ -35,7 +35,17 @@ return array(
     'PAGES' => array(
         'PAGESIZE' => 10,
         'THEME'  => '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%'
-    )
+    ),
 
+    //验证码配置
+    'CAPTCHA' => array(
+        'fontSize'  =>  18,              // 验证码字体大小(px)
+        'useCurve'  =>  false,            // 是否画混淆曲线
+        'useNoise'  =>  false,            // 是否添加杂点
+        'length'    =>  4,               // 验证码位数
+        'bg'        =>  array(243, 251, 254),  // 背景颜色
+        'reset'     =>  true,           // 验证成功后是否重置
+        'fontttf'   =>  '4.ttf',
+    ),
 
 );

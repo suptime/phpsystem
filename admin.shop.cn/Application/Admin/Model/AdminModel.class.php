@@ -9,7 +9,6 @@ use Think\Page;
 
 class AdminModel extends Model
 {
-
     /**
      * 自动验证表单
      * @var array
@@ -70,26 +69,58 @@ class AdminModel extends Model
      */
     public function addAdmin(){
         //加密后的密码
-        $arr = $this->createSaltStr($this->data['passowrd']);
-        $this->data['password'] = $arr['password'];
-        $this->data['salt'] = $arr['salt'];
+        $this->startTrans();
 
-        $tokenData = $this->_createToken();  //生成token
-        $this->data['token'] = $tokenData['token'];
-        $this->data['token_create_time'] = $tokenData['token_create_time'];
+        //生成加盐加密密码和盐
+        $arr = $this->createSaltStr($this->data['passowrd']);
+        $this->data['password'] = $arr['password']; //生成后的密码
+        $this->data['salt'] = $arr['salt']; //盐
+        $this->data['add_time'] = NOW_TIME;
 
         //添加管理员到数据表
-        return $this->add();
+        if (!$admin_id = $this->add()) {
+            $this->error = '添加管理员失败';
+            $this->rollback();
+            return false;
+        }
+
+        //获得角色列表
+        $role_ids = I('post.role_id');
+        //未选中角色,直接返回true
+        if (empty($role_ids)) {
+            $this->commit();
+            return true;
+        }
+
+        //遍历角色id并保存到数组中
+        $adminRoles = [];
+        foreach($role_ids as $role_id){
+            $adminRoles[] = array(
+                'admin_id' => $admin_id,
+                'role_id' => $role_id,
+            );
+        }
+
+        //保存角色,管理员到,角色-管理员关联表
+        if (M('AdminRole')->addAll($adminRoles) == false) {
+            $this->error = '添加管理员角色关联数据失败';
+            $this->rollback();
+            return false;
+        }
+
+        $this->commit();
+        return true;
     }
 
     /**
      * 修改管理员
      * @return bool
      */
-    public function saveAdmin(){
+    public function saveAdmin($id){
         //移除用户名
         unset($this->data['username']);
         $newPassword = $this->data['password'];
+
         //判断用户是否输入了新密码
         if ($newPassword) {
             $arr = $this->createSaltStr($newPassword);
@@ -103,11 +134,55 @@ class AdminModel extends Model
             unset($this->data['password']);
         }
 
-        //操作数据库
-        if (!$this->save()) {
+        //开启事务
+        $this->startTrans();
+
+        //获得角色列表
+        $role_ids = I('post.role_id');
+
+        //未选中角色,直接返回true
+        if (empty($role_ids)) {
+            $this->commit();
+            return true;
+        }
+
+        //遍历角色id并保存到数组中
+        $adminRoles = [];
+        foreach($role_ids as $role_id){
+            $adminRoles[] = array(
+                'admin_id' => $id,
+                'role_id' => $role_id,
+            );
+        }
+
+        //先删除管理员角色关联表中的数据
+        $adminRoleModel = M('AdminRole');
+        //查询关联数据存在时才执行删除数据操作
+        $admin_role_data = $adminRoleModel->where("admin_id = $id")->limit(1)->select();
+
+        if ($admin_role_data) {
+            if ($adminRoleModel->where("admin_id = $id")->delete() === false) {
+                $this->error = '删除角色关联数据失败';
+                $this->rollback();
+                return false;
+            }
+        }
+
+        //保存角色,管理员到,角色-管理员关联表
+        if ($adminRoleModel->addAll($adminRoles) === false) {
+            $this->error = '添加管理员角色关联数据失败';
+            $this->rollback();
             return false;
         }
 
+        //操作数据库
+        if (!$this->save()) {
+            $this->rollback();
+            $this->error = '更新管理员资料失败';
+            return false;
+        }
+
+        $this->commit();    //提交事务
         return true;
     }
 
@@ -188,7 +263,7 @@ class AdminModel extends Model
             return false;
         }
         //生成session
-        session('USERINFO',$admin);
+        session('ADMIN_INFO',$admin);
 
         //判断是否勾选了remember
         if (I('post.remember')) {
@@ -255,9 +330,33 @@ class AdminModel extends Model
         //更新token令牌
         $this->_createToken($admin);
         //重新生成session
-        session('USERINFO',$admin);
+        session('ADMIN_INFO',$admin);
         //返回执行结果
         return true;
     }
 
+    private function _getPermissions(){
+        //获取session
+        $adminInfo = session('ADMIN_INFO');
+
+        //根据权限关联表获得当前用户对应的权限路径
+        $permission_id_path = M('AdminRole')->alias('ar')
+            ->field('p.id,p.path')
+            ->join('__ROLE_PERMISSION__ as rp ON ar.role_id = rp.role_id')
+            ->join('__PERMISSION__ as p ON rp.permission_id = p.id')
+            ->where(array('admin_id' => $adminInfo['id']))
+            ->select();
+
+        //遍历查询出来的权限路径和权限id,分别保存到数组中
+        $pathes = array();  //权限路径
+        $ids = array(); //权限id
+        foreach($permission_id_path as $v){
+            $pathes[] = $v['path'];
+            $ids[] = $v['id'];
+        }
+
+        //将查询出来的权限路径和权限id保存到session中
+        session('ADMIN_PERSISSION_PATHES',$pathes);
+        session('ADMIN_PERSISSION_IDS',$ids);
+    }
 }
