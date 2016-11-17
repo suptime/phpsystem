@@ -44,22 +44,21 @@
         <tr>
             <td class="label">关联权限:</td>
             <td>
-                <!--父权限输出-->
-                <foreach name='permissions' item='top'>
+                <!--权限列表-->
+            <foreach name="permissions" item="top">
+                <eq name="top.parent_id" value="0">
                     <div class="item_list">
-                    <if condition="$top.level eq 1">
                         <p><label><input class="top_checkbox" type="checkbox" value="{$top.id}" name="permission_id[]" <if condition="in_array($top['id'],$power)">checked="checked"</if> /> <b>{$top.name}</b> </label></p>
-                    </if>
-
                         <div class="son_permission">
-                    <foreach name='permissions' item='son'>
-                        <if condition="$son.parent_id eq $top['id']">
-                            <label><input class="checkbox" type="checkbox" value="{$son.id}" name="permission_id[]" <if condition="in_array($son['id'],$power)">checked="checked"</if> /> {$son.name} </label>
-                        </if>
-                    </foreach>
+                        <foreach name="permissions" item="son">
+                            <eq name="son.parent_id" value="$top['id']">
+                                <label><input class="checkbox" type="checkbox" value="{$son.id}" name="permission_id[]" <if condition="in_array($son['id'],$power)">checked="checked"</if> /> {$son.name} </label>
+                            </eq>
+                        </foreach>
                         </div>
                     </div>
-                </foreach>
+                </eq>
+            </foreach>
             </td>
         </tr>
     </table>
@@ -88,9 +87,9 @@ $(function(){
     function changeInput(){
         var pid = $('#parent_id').find('option:selected').val();
         if(pid == 0){
-            $("input[name='path']").prop('disabled',true);
+            $("input[name='path']").prop('readonly',true);
         }else{
-            $("input[name='path']").prop('disabled',false);
+            $("input[name='path']").prop('readonly',false);
         }
     }
 });

@@ -42,14 +42,13 @@
         <tr>
             <td class="label">关联权限:</td>
             <td>
-                <!--父权限输出-->
-                <?php if(is_array($permissions)): foreach($permissions as $key=>$top): ?><div class="item_list">
-                    <?php if($top["level"] == 1): ?><p><label><input class="top_checkbox" type="checkbox" value="<?php echo ($top["id"]); ?>" name="permission_id[]" <?php if(in_array($top['id'],$power)): ?>checked="checked"<?php endif; ?> /> <b><?php echo ($top["name"]); ?></b> </label></p><?php endif; ?>
-
+                <!--权限列表-->
+            <?php if(is_array($permissions)): foreach($permissions as $key=>$top): if(($top["parent_id"]) == "0"): ?><div class="item_list">
+                        <p><label><input class="top_checkbox" type="checkbox" value="<?php echo ($top["id"]); ?>" name="permission_id[]" <?php if(in_array($top['id'],$power)): ?>checked="checked"<?php endif; ?> /> <b><?php echo ($top["name"]); ?></b> </label></p>
                         <div class="son_permission">
-                    <?php if(is_array($permissions)): foreach($permissions as $key=>$son): if($son["parent_id"] == $top['id']): ?><label><input class="checkbox" type="checkbox" value="<?php echo ($son["id"]); ?>" name="permission_id[]" <?php if(in_array($son['id'],$power)): ?>checked="checked"<?php endif; ?> /> <?php echo ($son["name"]); ?> </label><?php endif; endforeach; endif; ?>
+                        <?php if(is_array($permissions)): foreach($permissions as $key=>$son): if(($son["parent_id"]) == $top['id']): ?><label><input class="checkbox" type="checkbox" value="<?php echo ($son["id"]); ?>" name="permission_id[]" <?php if(in_array($son['id'],$power)): ?>checked="checked"<?php endif; ?> /> <?php echo ($son["name"]); ?> </label><?php endif; endforeach; endif; ?>
                         </div>
-                    </div><?php endforeach; endif; ?>
+                    </div><?php endif; endforeach; endif; ?>
             </td>
         </tr>
     </table>
@@ -78,9 +77,9 @@ $(function(){
     function changeInput(){
         var pid = $('#parent_id').find('option:selected').val();
         if(pid == 0){
-            $("input[name='path']").prop('disabled',true);
+            $("input[name='path']").prop('readonly',true);
         }else{
-            $("input[name='path']").prop('disabled',false);
+            $("input[name='path']").prop('readonly',false);
         }
     }
 });
