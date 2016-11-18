@@ -87,9 +87,9 @@ $(function(){
     function changeInput(){
         var pid = $('#parent_id').find('option:selected').val();
         if(pid == 0){
-            $("input[name='path']").prop('readonly',true);
+            $("input[name='path']").prop('disabled',true);
         }else{
-            $("input[name='path']").prop('readonly',false);
+            $("input[name='path']").prop('disabled',false);
         }
     }
 });
