@@ -50,29 +50,29 @@
 		</div>
 		<div class="login_bd">
 			<div class="login_form fl">
-				<form action="" method="post">
+				<form action="<?php echo U();?>" method="post" id="login">
 					<ul>
 						<li>
-							<label for="">用户名：</label>
-							<input type="text" class="txt" name="username" />
+							<label>用户名：</label>
+							<input type="text" class="txt" name="username" /><span class="error-msg"></span>
 						</li>
 						<li>
-							<label for="">密码：</label>
-							<input type="password" class="txt" name="password" />
+							<label>密码：</label>
+							<input type="password" class="txt" name="password" /><span class="error-msg"></span>
 							<a href="">忘记密码?</a>
 						</li>
 						<li class="checkcode">
-							<label for="">验证码：</label>
-							<input type="text"  name="checkcode" />
-							<img src="images/checkcode1.jpg" alt="" />
-							<span>看不清？<a href="">换一张</a></span>
+							<label>验证码：</label>
+							<input type="text"  name="captcha" />
+							<img id="captcha" src="<?php echo U('Captcha/code');?>" title="点击换图" onclick='this.src="<?php echo U('Captcha/code');?>"'/>
+							<span class="error-msg"></span>
 						</li>
 						<li>
-							<label for="">&nbsp;</label>
-							<input type="checkbox" class="chb"  /> 保存登录信息
+							<label>&nbsp;</label>
+							<input type="checkbox" class="chb" name="remember"  /> 保存登录信息
 						</li>
 						<li>
-							<label for="">&nbsp;</label>
+							<label>&nbsp;</label>
 							<input type="submit" value="" class="login_btn" />
 						</li>
 					</ul>
@@ -96,7 +96,7 @@
 				<h3>还不是商城用户</h3>
 				<p>现在免费注册成为商城用户，便能立刻享受便宜又放心的购物乐趣，心动不如行动，赶紧加入吧!</p>
 
-				<a href="regist.html" class="reg_btn">免费注册 >></a>
+				<a href="<?php echo U('register');?>" class="reg_btn">免费注册 >></a>
 			</div>
 
 		</div>
@@ -131,6 +131,50 @@
 
 <script type="text/javascript" src="http://www.shop.cn/Public/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="http://www.shop.cn/Public/plugs/layer/layer.js"></script>
+	<script type="text/javascript">
+		//初始化验证规则
+		$('#login').validate({
+			rules: {
+				//验证用户名
+				username: {
+					required: true,
+					rangelength: [3, 20],
+				},
+				//验证密码
+				password: {
+					required: true,
+					rangelength: [6, 20],
+				},
+				captcha: "required",
+			},
+
+			//验证提示信息
+			messages: {
+				username: {
+					required: "用户名不能为空",
+					rangelength: "用户名长度应是3-20位",
+				},
+				password: {
+					required: "密码不能为空",
+					rangelength: "密码长度应是6-20位",
+				},
+				captcha: "验证码不能为空",
+			},
+
+			//将错误信息放入指定位置
+			errorPlacement: function (error, element) {
+				var errMsg = error[0].innerHTML;
+				var place = $(element).siblings('.error-msg');
+				//输出错误信息
+				place.html(errMsg)
+			},
+
+			//成功后执行的函数
+			success: function () {},
+
+		});
+
+	</script>
 
 </body>
 </html>

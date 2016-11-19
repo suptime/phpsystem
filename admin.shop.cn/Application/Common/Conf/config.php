@@ -17,6 +17,7 @@ return array(
     'SITE_URL'              => 'http://admin.shop.cn/', //网站根域名
     'URL_MODEL'             =>  2,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
     // 0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式
+    'URL_HTML_SUFFIX'       =>  false,
 
     'COOKIE_PREFIX'         =>  'COOKIE_PREFIX_',   //cookie前缀
 

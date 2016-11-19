@@ -340,6 +340,9 @@ class AdminModel extends Model
         return true;
     }
 
+    /**
+     * 生成权限session
+     */
     private function _getPermissions(){
         //获取session
         $adminInfo = session('ADMIN_INFO');

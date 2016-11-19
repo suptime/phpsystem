@@ -20,6 +20,15 @@ class MemberController extends Controller
 
 
     /**
+     * 会员中心首页
+     */
+    public function index(){
+        $this->_model->memberAutoLogin();
+        $this->display('main');
+    }
+
+
+    /**
      * 会员注册方法
      */
     public function register(){
@@ -39,13 +48,58 @@ class MemberController extends Controller
     }
 
     /**
+     * 会员登陆功能
+     */
+    public function login(){
+        if (IS_POST) {
+            //收集数据
+            if ($this->_model->create() === false) {
+                $this->error(get_error($this->_model));
+            }
+            //用户登陆
+            if ($this->_model->loginMember() === false) {
+                $this->error(get_error($this->_model));
+            }
+            //成功跳转
+            $this->success('登陆成功',U('index'));
+
+        } else {
+            //判断是否已登陆,如果已登陆就自动登陆
+            if ($this->_model->memberAutoLogin()) {
+                $this->success('您已经登录过了,无需重复登录',U('Member/index'));
+                exit;
+            }
+
+            $this->assign('title', '用户登陆');
+            $this->display();
+        }
+    }
+
+    /**
+     * 会员退出
+     */
+    public function logout(){
+        session('MEMBER_LOGIN_INFOS',null);
+        cookie('MEMBER_LOGIN_INFOS',null);
+        $url = U('Index/index');
+        redirect($url);
+    }
+
+
+    /**
      * 用户注册成功邮件验证页面
+     * @param $active_token 激活验证token
+     * @param $email    注册的邮箱地址
      */
     public function active($active_token,$email){
         $result = $this->_model->where(array('active_token'=>$active_token,'email'=>$email,'status'=>0))->setField('status',1);
-        //$this->_model->where(['email'=>$email,'active_token'=>$active_token,'status'=>0])->setField('status',1);
+        //如果已经激活
+        if ($this->_model->where(array('active_token'=>$active_token,'email'=>$email,'status'=>1))->count()) {
+            $this->error('您的账号已经激活',U('Member/login'),1);
+        }
+        //账号激活失败
         if (!$result) {
-            $this->error('账号激活失败,请登录会员中心重新发送激活邮件');
+            $this->error('账号激活失败,请登录会员中心重新发送激活邮件',U('Member/login'));
         }
         //激活成功,跳转到登陆页面
         $this->success('账号激活成功',U('Member/login'));
@@ -67,7 +121,10 @@ class MemberController extends Controller
         $this->ajaxReturn(false);
     }
 
-    //发送短信验证码
+    /**
+     * 发送短信验证码
+     * @param $tel  传入的电话号码, GET
+     */
     public function sendSms($tel){
         //判断是否是ajax请求
         if (IS_AJAX) {

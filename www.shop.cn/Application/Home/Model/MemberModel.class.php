@@ -22,7 +22,7 @@ class MemberModel extends Model
         //array(验证字段1,验证规则,错误提示,[验证条件,附加规则,验证时间]),
         array('username','require','用户名不能为空'),
         array('username','','用户名已注册',self::EXISTS_VALIDATE,'unique','reg'),
-        array('password','6-20','密码长度错误',self::EXISTS_VALIDATE,'length'),
+        array('password','6,20','密码长度错误',self::EXISTS_VALIDATE,'length'),
         array('repassword','require','验证密码不能为空'),
         array('repassword','password','验证密码与原密码不一致',self::EXISTS_VALIDATE,'confirm'),
         array('email','require','邮箱不能为空'),
@@ -113,6 +113,90 @@ class MemberModel extends Model
 
         //成功后返回true
         return true;
+    }
+
+    /**
+     * 用户登陆
+     */
+    public function loginMember(){
+
+        //用户输入的密码
+        $new_password = $this->data['password'];
+
+        //根据用户名查询出盐
+        $user = $this->getByUsername($this->username);
+
+        //查询结果为null
+        if (!$user['salt']) {
+            $this->error = '用户名不存在';
+            return false;
+        }
+
+        //密码加密
+        $password = salt_mcrypt($new_password,$user['salt']);
+
+        //如果查询不到结果
+        if ($password != $user['password']) {
+            $this->error ='密码不正确';
+            return false;
+        }
+
+        //生成session
+        session('MEMBER_LOGIN_INFOS',$user);   //*****MEMBER_LOGIN_INFOS*****
+
+        //判断是否需要生成cookie
+        if(!empty(I('post.remember'))){
+            cookie('MEMBER_LOGIN_COOKIE',$user,60*60*168+NOW_TIME);
+        }
+
+        //获得对应的数据
+        $data = array(
+            'id'=>$user['id'],
+            'last_login_time' => NOW_TIME,
+            'last_login_ip' => get_client_ip(),
+        );
+
+        //修改指定的
+        $this->save($data);
+        return true;
+    }
+
+
+    /**
+     * 自动登陆
+     * @return bool|mixed 返回数据
+     */
+    public function memberAutoLogin(){
+        //获取session
+        $session = session('MEMBER_LOGIN_INFOS');
+        //获取cookie
+        $cookie = cookie('MEMBER_LOGIN_COOKIE');
+
+        if (!isset($session)) {
+            if ($cookie) {
+                $condition =array(
+                    'id'=>$session['id'],
+                    'email'=>$cookie['email'],
+                    'token'=>$cookie['token'],
+                );
+            }
+            //cookie不存在
+            return false;
+        }else{
+            $condition =array(
+                'id'=>$session['id'],
+                'email'=>$session['email'],
+                'token'=>$session['token'],
+            );
+        }
+
+        //查询一条符合的数据判断状态
+        if (!($user = $this->where($condition)->select())) {
+            return false;
+        }
+
+        //返回一条数据
+        return $user;
     }
 
 }

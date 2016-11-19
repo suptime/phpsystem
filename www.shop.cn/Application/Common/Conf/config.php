@@ -16,6 +16,7 @@ return array(
     'SITE_URL'              => 'http://www.shop.cn/', //网站根域名
     'URL_MODEL'             =>  2,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
     // 0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式
+    'URL_HTML_SUFFIX'       =>  false,
 
     'COOKIE_PREFIX'         =>  'COOKIE_PREFIX_',   //cookie前缀
 
@@ -41,7 +42,7 @@ return array(
         'useNoise'  =>  true,            // 是否添加杂点
         'length'    =>  4,               // 验证码位数
         'bg'        =>  array(243, 251, 254),  // 背景颜色
-        'reset'     =>  true,           // 验证成功后是否重置
+        'reset'     =>  false,           // 验证成功后是否重置
         'fontttf'   =>  '4.ttf',
     ),
 
@@ -52,6 +53,12 @@ return array(
         'autograph' => '网站短信接口测试',
         'webname' => '拉邦购商城',
         'TemplateCode' => 'SMS_26035289',
+    ),
+
+
+    //验证列表
+    'MEMBER_URL_LIST' => array(
+        'Home/Member/index',
     ),
 
 
