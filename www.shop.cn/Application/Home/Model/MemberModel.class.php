@@ -120,6 +120,12 @@ class MemberModel extends Model
      */
     public function loginMember(){
 
+        //自动登陆
+        if ($this->memberAutoLogin()) {
+            redirect('Member/index');
+            exit;
+        }
+
         //用户输入的密码
         $new_password = $this->data['password'];
 
@@ -146,7 +152,12 @@ class MemberModel extends Model
 
         //判断是否需要生成cookie
         if(!empty(I('post.remember'))){
-            cookie('MEMBER_LOGIN_COOKIE',$user,60*60*168+NOW_TIME);
+            $user_cookie = array(
+                'id'=>$user['id'],
+                'username'=>$user['username'],
+                'id'=>$user['id'],
+            );
+            cookie('MEMBER_LOGIN_COOKIE',$user_cookie,2086000);
         }
 
         //获得对应的数据
@@ -172,31 +183,29 @@ class MemberModel extends Model
         //获取cookie
         $cookie = cookie('MEMBER_LOGIN_COOKIE');
 
-        if (!isset($session)) {
-            if ($cookie) {
-                $condition =array(
-                    'id'=>$session['id'],
-                    'email'=>$cookie['email'],
-                    'token'=>$cookie['token'],
-                );
-            }
-            //cookie不存在
-            return false;
+        //判断session是否存在
+        if($session){
+            $id =$session['id'];
         }else{
-            $condition =array(
-                'id'=>$session['id'],
-                'email'=>$session['email'],
-                'token'=>$session['token'],
-            );
+            //如果session不存在判断cookie是否存在
+            if ($cookie) {
+                $id =$cookie['id'];
+            }else{
+                //cookie不存在,返回false
+                return false;
+            }
         }
 
         //查询一条符合的数据判断状态
-        if (!($user = $this->where($condition)->select())) {
+        if (!($user = $this->find($id))) {
             return false;
         }
 
+        //查询成功,存入session
+        session('MEMBER_LOGIN_INFOS',$user);
+
         //返回一条数据
-        return $user;
+        return true;
     }
 
 }

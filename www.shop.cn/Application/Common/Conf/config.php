@@ -14,11 +14,16 @@ return array(
     'DB_CHARSET'            =>  'utf8',      // 数据库编码默认采用utf8
 
     'SITE_URL'              => 'http://www.shop.cn/', //网站根域名
+    'WEB_TITLE'             => ' - 拉邦购物网 - www.labanggou.com',
+    'IMG_PATH'              => 'http://admin.shop.cn/', //图片附件远程地址
+
     'URL_MODEL'             =>  2,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
     // 0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式
     'URL_HTML_SUFFIX'       =>  false,
 
     'COOKIE_PREFIX'         =>  'COOKIE_PREFIX_',   //cookie前缀
+
+
 
     //静态资源默认地址
     'TMPL_PARSE_STRING' => array(

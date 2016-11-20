@@ -50,7 +50,6 @@
 </form>
 
 <div id="footer">
-    <br />
-    版权所有 &copy; 2016</div>
+    版权所有 &copy; <?php echo date('Y-m-d h:i:s',NOW_TIME);?></div>
 </body>
 </html>

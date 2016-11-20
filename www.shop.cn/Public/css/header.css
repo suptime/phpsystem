@@ -5,8 +5,8 @@
 */
 
 /*顶部导航 topnav*/
-.topnav{width: 100%; height: 30px; background:#efefef url("../images/bg1.png") 0 0  repeat-x;}
-.topnav_right li{float: left; display: inline; height: 30px; line-height: 30px; padding:0 5px;}
+.topnav{width: 100%;height: 28px;background: #f7f8f8;border-bottom: 1px solid #ddd;}
+.topnav_right li{float: left;display: inline;height: 28px;line-height: 28px;padding:0 5px;}
 .topnav_right li.line{color: #ccc;}
 
 
@@ -30,7 +30,7 @@
 .user dt em{display: inline-block; width:24px; height: 24px; margin: 2px 0 0 3px;  background: url("../images/icon.png") -202px -176px no-repeat;}
 .user dt a{display: inline-block; height: 30px; line-height: 30px; vertical-align: top; padding-left: 5px;  }
 .user dt b{display: inline-block; width: 13px; height: 7px; background: url("../images/bg1.png") -14px -283px no-repeat;font-size: 0; position: absolute; right: 10px; top:13px;}
-.user dd{width: 310px; display: none; background: #fff;  border: 1px solid #e3e3e3; position: absolute; top:31px; right: 1px; z-index:8; border-radius: 5px 0 5px 5px; -webkit-border-radius:5px 0 5px 5px;}
+.user dd{width: 241px;display: none;background: #fff;border: 1px solid #e3e3e3;position: absolute;top:31px;right: 1px;z-index:8;border-radius: 5px 0 5px 5px;-webkit-border-radius:5px 0 5px 5px;}
 
 .user .prompt{height: 37px; line-height: 37px; padding-left: 10px; background: #fcfcfc; border-radius: 5px 0 5px 5px; -webkit-border-radius:5px 0 5px 5px; }
 .user .prompt a{color: #005EA7;}
@@ -39,10 +39,10 @@
 .user dt.on{height:32px;background: url("../images/icon.png") -64px -351px;}
 .user dt.on b{background: url("../images/bg1.png") -14px -275px no-repeat; }
 
-.uclist ul{width:134px; padding:0 10px;}
+.uclist ul{width: 100px;padding:0 10px;}
 .uclist ul.list1{border-right: 1px solid #e6e6e6;}
 .uclist li{border-bottom: 1px dotted #ccc;}
-.uclist li a{display: block; height: 18px; padding: 5px; color: #005EA7; }
+.uclist li a{display: block;height: 18px;padding: 5px;color: #005EA7;text-align: center;}
 .uclist li a:hover{background: #f5f5f5; color: #c00; text-decoration: none;}
 .viewlist{background:#f3f3f3; }
 .viewlist h3{height: 30px; line-height: 30px; padding-left: 10px;}
@@ -63,19 +63,19 @@
 .cart dt.on{height:32px;background: url("../images/icon.png") 0 -283px;}
 
 /*导航css*/
-.nav{height: 40px; background: #d00000 url("../images/bg1.png") 0 -315px repeat-x; position:relative; z-index: 100000; }
+.nav{height: 40px;background: #d00000;position:relative;z-index: 100000;}
 .category{width: 210px; height:40px; position: relative;  }
-.cat_hd{width: 210px; height: 40px; background: url("../images/bg1.png") -75px -273px no-repeat;}
-.cat_hd h2{width: 190px; height: 40px; margin-left: 10px; background: url("../images/bg1.png") 0 -427px repeat-x; line-height: 40px; padding-left: 10px;  color: #fff; font-family: "microsoft yahei"; font-size: 13px; font-weight: bolder; }
+.cat_hd{width: 210px;height: 40px;/* background: url("../images/bg1.png") -75px -273px no-repeat; */}
+.cat_hd h2{width: 190px;height: 40px;margin-left: 10px;/* background: url("../images/bg1.png") 0 -427px repeat-x; */line-height: 40px;padding-left: 10px;color: #fff;font-family: "microsoft yahei";font-size: 13px;font-weight: bolder;}
 
 .navitems{width: 1000px; height: 40px; }
 .navitems ul{width: 990px; height: 40px;line-height: 40px; }
-.right_corner{width: 10px; height: 40px;background: url("../images/bg1.png") 0 -273px no-repeat;}
-.navitems li{float: left; display: inline; width: 83px; text-align: center; background: url("../images/bg1.png") -83px -509px no-repeat;}
-.navitems li a{display:inline-block; width: 83px; height: 40px;  color: #fff; font: bold 15px/40px "microsoft yahei";}
-.navitems li a:hover{text-decoration: none; background: url("../images/bg1.png") 0 -161px repeat-x;}
+.right_corner{width: 10px;height: 40px;}
+.navitems li{float: left;display: inline;width: 100px;text-align: center;}
+.navitems li a{display:inline-block;width: 100%;height: 40px;color: #fff;font: bold 15px/40px "microsoft yahei";}
+.navitems li a:hover{text-decoration: none;background: #f98504;}
 
-.navitems li.current a{background: url("../images/bg1.png") 0 -161px repeat-x;}
+.navitems li.current a{background: #a20202;}
 
 
 /*分类导航效果*/

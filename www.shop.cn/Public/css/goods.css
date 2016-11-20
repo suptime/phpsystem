@@ -15,7 +15,8 @@
 
 /*预览图样式*/
 .preview{width: 352px; height: 450px; margin-top: 15px;}
-.midpic{width: 350px; height: 350px; border:1px solid #e4e4e4;}
+.midpic{width: 350px; height: 350px; border:1px solid #e4e4e4; vertical-align: middle;display: table-cell;}
+.midpic img{ width: 100%;vertical-align:middle;}
 .smallpic{width: 350px; height: 54px; margin-top: 10px; position: relative;}
 .smallpic_wrap{width: 310px; height: 54px; position: absolute; top: 0; left: 24px; overflow: hidden;}
 .smallpic ul{width:1500px; height:54px; position: absolute; top: 0; left: 0;}

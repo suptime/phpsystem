@@ -68,6 +68,7 @@ class ArticleController extends Controller
 
             //文章主表数据添加并返回文章id
             $id = $articleModel->add();
+
             //判断插入是否成功
             if (!$id) {
                 $articleModel->rollback();
@@ -79,7 +80,7 @@ class ArticleController extends Controller
             $data['content'] = I('post.content','',false);
 
             //文章内容表保存数据
-            if ($articleDetailModel->add($data)) {
+            if (($articleDetailModel->add($data)) === false) {
                 $articleModel->rollback();
                 $this->error($articleDetailModel->getError().'副表');
             }

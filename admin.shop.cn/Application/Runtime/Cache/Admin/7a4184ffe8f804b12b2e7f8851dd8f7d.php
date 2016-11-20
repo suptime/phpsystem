@@ -65,8 +65,7 @@
 </form>
 
 <div id="footer">
-<br />
-版权所有 &copy; 2016</div>
+版权所有 &copy; <?php echo date('Y-m-d h:i:s',NOW_TIME);?></div>
 <script type="text/javascript" src="http://admin.shop.cn/Public/js/jquery.min.js"></script>
 <script type="text/javascript">
 //    $("#cate option[value='<?php echo I('get.article_category_id');?>']").prop("selected",true);

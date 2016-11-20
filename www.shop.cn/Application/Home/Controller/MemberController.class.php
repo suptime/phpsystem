@@ -10,11 +10,12 @@ namespace Home\Controller;
 use Org\Util\String;
 use Think\Controller;
 
-class MemberController extends Controller
+class MemberController extends BaseController
 {
     private $_model;
 
     public function _initialize(){
+        parent::_initialize();
         $this->_model = D('Member');
     }
 
@@ -23,7 +24,7 @@ class MemberController extends Controller
      * 会员中心首页
      */
     public function index(){
-        $this->_model->memberAutoLogin();
+        //$this->_model->memberAutoLogin();
         $this->display('main');
     }
 
@@ -80,7 +81,7 @@ class MemberController extends Controller
      */
     public function logout(){
         session('MEMBER_LOGIN_INFOS',null);
-        cookie('MEMBER_LOGIN_INFOS',null);
+        cookie('MEMBER_LOGIN_COOKIE',null);
         $url = U('Index/index');
         redirect($url);
     }
