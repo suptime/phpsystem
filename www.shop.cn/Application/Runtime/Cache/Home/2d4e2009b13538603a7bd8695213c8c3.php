@@ -26,18 +26,12 @@
         <div class="topnav_right fr">
             <ul>
                 <?php if($member == false): ?><li>您好，欢迎来到京西！[<a href="<?php echo U('Member/login');?>">登录</a>] [<a href="<?php echo U('Member/register');?>">免费注册</a>]</li>
-                    <li class="line">|</li>
-                    <li><a href="">我的订单</a></li>
-                    <li class="line">|</li>
-                    <li>客户服务</li>
-
                     <?php else: ?>
-
-                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li>
-                    <li class="line">|</li>
-                    <li><a href="">我的订单</a></li>
-                    <li class="line">|</li>
-                    <li>客户服务</li><?php endif; ?>
+                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li><?php endif; ?>
+                <li class="line">|</li>
+                <li><a href="">我的订单</a></li>
+                <li class="line">|</li>
+                <li>客户服务</li>
             </ul>
         </div>
     </div>
@@ -119,7 +113,7 @@
         <div class="cart fl">
             <dl>
                 <dt>
-                    <a href="">去购物车结算</a>
+                    <a href="<?php echo U('Cart/cartList');?>">去购物车结算</a>
                     <b></b>
                 </dt>
                 <dd>

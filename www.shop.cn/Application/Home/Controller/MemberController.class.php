@@ -24,7 +24,6 @@ class MemberController extends BaseController
      * 会员中心首页
      */
     public function index(){
-        //$this->_model->memberAutoLogin();
         $this->display('main');
     }
 

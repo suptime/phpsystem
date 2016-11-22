@@ -90,3 +90,17 @@ function sendMail($address,$subject,$content) {
         );
     }
 }
+
+
+/**
+ * 获取已登陆用户的id
+ * @return bool 成功返回member_id,失败返回false
+ */
+function get_member_id(){
+    //获取登陆用户的SESSION
+    if ($member_info = session('MEMBER_LOGIN_INFOS')) {
+        return $member_info['id'];
+    }else{
+        return false;
+    }
+}

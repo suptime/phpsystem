@@ -79,7 +79,7 @@
 
 
 /*分类导航效果*/
-.cat_bd{width: 203px; height: 402px; padding: 3px 3px 3px 0; position: absolute; left: 0; top:40px; z-index: 100000; background: #FCF4EA; border: 2px solid #d00000; border-top: none; }
+.cat_bd{width: 203px;height: 402px;padding: 0 3px 3px 0;position: absolute;left: 0;top:40px;z-index: 100000;background: #FCF4EA;border: 2px solid #d00000;border-top: none;}
 .cat{width: 200px; height: 30px; border-top: 1px solid #FFFDFA; }
 .item1{border-top: none;}
 
@@ -87,7 +87,7 @@
 .cat h3 b{display: inline-block; width: 9px; height: 11px; background: url("../images/bg1.png") -62px -273px no-repeat; position: absolute; left: 182px; top:9px; z-index:10;}
 
 .cat h3 a:hover{font-weight: bold;}
-.cat_detail{width: 550px;padding:0 8px; display: none; position: absolute; left:181px; z-index: 100020; top:3px; border:1px solid #c30; background: #fff; min-height: 402px; _height:402px;}
+.cat_detail{width: 550px;padding:0 8px;display: none;position: absolute;left:181px;z-index: 100020;top: 0;border:1px solid #c30;background: #fff;min-height: 405px;_height:402px;}
 .cat_detail dl{padding:7px 0; border-top: 1px dotted #EED6B7; clear: both; height: 26px;}
 .cat_detail dl.dl_1st{border-top: none;}
 .cat_detail dt{float: left; display: inline; width: 60px; text-align: right; margin-right: 10px; line-height: 22px; }

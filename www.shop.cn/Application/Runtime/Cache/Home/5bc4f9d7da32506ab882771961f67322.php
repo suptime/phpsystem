@@ -44,18 +44,12 @@
         <div class="topnav_right fr">
             <ul>
                 <?php if($member == false): ?><li>您好，欢迎来到京西！[<a href="<?php echo U('Member/login');?>">登录</a>] [<a href="<?php echo U('Member/register');?>">免费注册</a>]</li>
-                    <li class="line">|</li>
-                    <li><a href="">我的订单</a></li>
-                    <li class="line">|</li>
-                    <li>客户服务</li>
-
                     <?php else: ?>
-
-                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li>
-                    <li class="line">|</li>
-                    <li><a href="">我的订单</a></li>
-                    <li class="line">|</li>
-                    <li>客户服务</li><?php endif; ?>
+                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li><?php endif; ?>
+                <li class="line">|</li>
+                <li><a href="">我的订单</a></li>
+                <li class="line">|</li>
+                <li>客户服务</li>
             </ul>
         </div>
     </div>
@@ -137,7 +131,7 @@
         <div class="cart fl">
             <dl>
                 <dt>
-                    <a href="">去购物车结算</a>
+                    <a href="<?php echo U('Cart/cartList');?>">去购物车结算</a>
                     <b></b>
                 </dt>
                 <dd>
@@ -332,7 +326,7 @@
 		<div class="goods_content fl mt10 ml10">
 			<!-- 商品概要信息 start -->
 			<div class="summary">
-				<h3><strong><?php echo ($row["name"]); ?></strong></h3>
+
 				
 				<!-- 图片预览区域 start -->
 				<div class="preview fl">
@@ -361,6 +355,7 @@
 
 				<!-- 商品基本信息区域 start -->
 				<div class="goodsinfo fl ml10">
+					<h3><strong><?php echo ($row["name"]); ?></strong></h3>
 					<ul>
 						<li><span>商品编号： </span><?php echo ($row["sn"]); ?></li>
 						<li class="market_price"><span>定价：</span><em>￥<?php echo ($row["market_price"]); ?></em></li>
@@ -369,15 +364,15 @@
 						<li><span>商品库存：</span><?php echo ($row["stock"]); ?> 件</li>
 						<li class="star"><span>商品评分：</span> <strong></strong><a href="">(已有21人评价)</a></li> <!-- 此处的星级切换css即可 默认为5星 star4 表示4星 star3 表示3星 star2表示2星 star1表示1星 -->
 					</ul>
-					<form action="" method="post" class="choose">
+					<form action="<?php echo U('Cart/addToCart');?>" method="get" class="choose">
 						<ul>
 							<li class="product">
 								<dl>
 									<dt>颜色：</dt>
 									<dd>
-										<a class="selected" href="javascript:;">黑色 <input type="radio" name="color" value="黑色" checked="checked" /></a>
-										<a href="javascript:;">白色 <input type="radio" name="color" value="白色" /></a>
-										<a href="javascript:;">蓝色 <input type="radio" name="color" value="蓝色" /></a>
+										<a class="selected" href="javascript:;">黑色 <input type="radio" name="color" value="black" checked="checked" /></a>
+										<a href="javascript:;">白色 <input type="radio" name="color" value="whrite" /></a>
+										<a href="javascript:;">蓝色 <input type="radio" name="color" value="blue" /></a>
 										<input type="hidden" name="" value="" />
 									</dd>
 								</dl>
@@ -392,6 +387,7 @@
 										<a class="selected" href="javascript:;">i5 8G内存版<input type="radio" name="ver" value="" checked="checked" /></a>
 										<a href="javascript:;">SSD超极本 <input type="radio" name="ver" value="" /></a>
 										<input type="hidden" name="" value="" />
+										<input type="hidden" name="goods_id" value="<?php echo ($row["id"]); ?>" />
 									</dd>
 								</dl>
 							</li>
@@ -410,7 +406,7 @@
 							<li>
 								<dl>
 									<dt>&nbsp;</dt>
-									<dd>
+									<dd><input type="hidden" name="emtype" value="<?php echo rand(1,100);?>" />
 										<input type="submit" value="" class="add_btn" />
 									</dd>
 								</dl>
