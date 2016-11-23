@@ -27,7 +27,9 @@
             <ul>
                 <?php if($member == false): ?><li>您好，欢迎来到京西！[<a href="<?php echo U('Member/login');?>">登录</a>] [<a href="<?php echo U('Member/register');?>">免费注册</a>]</li>
                     <?php else: ?>
-                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li><?php endif; ?>
+                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li>
+                    <li class="line">|</li>
+                    <li><a href="<?php echo U('Member/logout');?>">退出</a></li><?php endif; ?>
                 <li class="line">|</li>
                 <li><a href="">我的订单</a></li>
                 <li class="line">|</li>
@@ -190,22 +192,12 @@
 			<div class="area">
 				<div class="slide_items">
 					<ul>
-						<li><a href=""><img src="http://www.shop.cn/Public/images/index_slide1.jpg" alt="" /></a></li>
-						<li><a href=""><img src="http://www.shop.cn/Public/images/index_slide2.jpg" alt="" /></a></li>
-						<li><a href=""><img src="http://www.shop.cn/Public/images/index_slide3.jpg" alt="" /></a></li>
-						<li><a href=""><img src="http://www.shop.cn/Public/images/index_slide4.jpg" alt="" /></a></li>
-						<li><a href=""><img src="http://www.shop.cn/Public/images/index_slide5.jpg" alt="" /></a></li>
-						<li><a href=""><img src="http://www.shop.cn/Public/images/index_slide6.jpg" alt="" /></a></li>
+						<?php if(is_array($banners)): foreach($banners as $key=>$banner): ?><li><a href="<?php echo ($banner["url"]); ?>"><img src="<?php echo C('IMG_PATH'); echo ($banner["picture"]); ?>" alt="<?php echo ($banner["title"]); ?>" /></a></li><?php endforeach; endif; ?>
 					</ul>
 				</div>
 				<div class="slide_controls">
 					<ul>
-						<li class="on">1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
-						<li>6</li>
+						<?php if(is_array($banners)): foreach($banners as $k=>$banner): ?><li <?php if(($k) == "0"): ?>class="on"<?php endif; ?>><?php echo ($k+1); ?></li><?php endforeach; endif; ?>
 					</ul>
 				</div>
 			</div>

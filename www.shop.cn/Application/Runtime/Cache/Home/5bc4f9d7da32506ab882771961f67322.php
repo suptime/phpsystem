@@ -45,7 +45,9 @@
             <ul>
                 <?php if($member == false): ?><li>您好，欢迎来到京西！[<a href="<?php echo U('Member/login');?>">登录</a>] [<a href="<?php echo U('Member/register');?>">免费注册</a>]</li>
                     <?php else: ?>
-                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li><?php endif; ?>
+                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li>
+                    <li class="line">|</li>
+                    <li><a href="<?php echo U('Member/logout');?>">退出</a></li><?php endif; ?>
                 <li class="line">|</li>
                 <li><a href="">我的订单</a></li>
                 <li class="line">|</li>
@@ -364,7 +366,7 @@
 						<li><span>商品库存：</span><?php echo ($row["stock"]); ?> 件</li>
 						<li class="star"><span>商品评分：</span> <strong></strong><a href="">(已有21人评价)</a></li> <!-- 此处的星级切换css即可 默认为5星 star4 表示4星 star3 表示3星 star2表示2星 star1表示1星 -->
 					</ul>
-					<form action="<?php echo U('Cart/addToCart');?>" method="get" class="choose">
+					<form action="<?php echo U('Cart/addToCart');?>" method="post" class="choose">
 						<ul>
 							<li class="product">
 								<dl>

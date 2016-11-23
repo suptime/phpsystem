@@ -12,22 +12,16 @@
 			<div class="area">
 				<div class="slide_items">
 					<ul>
-						<li><a href=""><img src="__IMG__/index_slide1.jpg" alt="" /></a></li>
-						<li><a href=""><img src="__IMG__/index_slide2.jpg" alt="" /></a></li>
-						<li><a href=""><img src="__IMG__/index_slide3.jpg" alt="" /></a></li>
-						<li><a href=""><img src="__IMG__/index_slide4.jpg" alt="" /></a></li>
-						<li><a href=""><img src="__IMG__/index_slide5.jpg" alt="" /></a></li>
-						<li><a href=""><img src="__IMG__/index_slide6.jpg" alt="" /></a></li>
+						<foreach name="banners" item="banner">
+							<li><a href="{$banner.url}"><img src="{:C('IMG_PATH')}{$banner.picture}" alt="{$banner.title}" /></a></li>
+						</foreach>
 					</ul>
 				</div>
 				<div class="slide_controls">
 					<ul>
-						<li class="on">1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
-						<li>6</li>
+						<foreach name="banners" item="banner" key="k">
+						<li <eq name="k" value="0">class="on"</eq>>{$k+1}</li>
+						</foreach>
 					</ul>
 				</div>
 			</div>

@@ -29,61 +29,23 @@ class CartController extends BaseController
         //4,购物车中已经有了此商品,就加数量
         //5,将数据保存到cookie中
         //6,跳转到购物车页面,避免重复提交.
-
-        if (!empty($emtype) && $goods_id > 0) {
-
-            $member_id = get_member_id();
-            //SESSION存在,用户已登陆
-            if ($member_id) {
-
-                //查询条件,用于定位特定数据
-                $cond = array(
-                    'goods_id' => $goods_id,
-                    'member_id' => $member_id,
-                );
-
-                //判断数据库中是不是已经有了此商品
-                $haveAmount = $this->_model->where($cond)->getField('amount');
-
-                //存在商品: 取出商品的数量并加上传入的数量
-                if ($haveAmount) {
-                    //setInc方法  给当前字段在其本身的数量上再加上传入的数量
-                    $this->_model->where($cond)->setInc('amount', $amount);
-                } else {
-                    //需要插入购物车数据表的数据
-                    $rowData = array(
-                        'goods_id' => $goods_id,
-                        'member_id' => $member_id,
-                        'amount' => $amount,
-                    );
-                    //将购物车中的商品插入到购物车表中
-                    $this->_model->add($rowData);
-                }
-            } else {
-                //用户未登陆,获取cookie中的商品数据
-                $cartGoods = cookie('GOODS_CART_INFO');
-                //判断是否存在数据
-                //此处取出以商品id为键名的数据   例如:(商品id=>数量) 2 => 5
-                if ($cartGoods[$goods_id]) {
-                    $cartGoods[$goods_id] += $amount;   //原来的键值+当前传入的数量
-                } else {
-                    $cartGoods[$goods_id] = $amount;    //不存在商品,将新商品加入到购物车cookie中
-                }
-
-                //数据改动完成,生成新的cookie
-                cookie('GOODS_CART_INFO', $cartGoods, 9999999);
+        if (IS_POST && !empty($emtype) && $goods_id > 0) {
+            //添加商品到购物车
+            if ($this->_model->setAddToCart($goods_id,$amount) === false) {
+                $this->error(get_error($this->_model));
+                return false;
             }
 
             //数据判断改动完成,跳转到购物车页面
-            $url = U('Cart/addToCart', array('goods_id' => $goods_id, 'amount' => $amount));
+            //$url = U('Cart/addToCart', array('goods_id' => $goods_id, 'amount' => $amount));
+            $url = U('Cart/addToCart');
             redirect($url);
         }
 
         //如果没有传入商品id或者没传入商品数量
-        if (!$goods_id || !$amount) {
+        /*if (!$goods_id || !$amount) {
             $this->error('选择的商品为空或数量为空','/');
-        }
-
+        }*/
         //引入视图
         $this->display();
     }
@@ -94,22 +56,52 @@ class CartController extends BaseController
      */
     public function CartList()
     {
-        //获取session中的登陆用户id
-        if($member_id = get_member_id()){
-            //如果用户id存在,根据用户id查询出当前用户的购物车数据
-
-        }else{
-            //如果没有登陆,就将cookie中数据读取出来
-            $cookie = cookie('GOODS_CART_INFO');
+        //将cookie中的商品添加到数据库中
+        if ($this->_model->cookieToMySql() === false) {
+            $this->error(get_error($this->_model));
         }
-
+        //获取购物车商品数据
+        $cartData = $this->_model->getCartGoodsData();
+        //输出数据给视图文件
+        $this->assign('cart',$cartData['cart']);
+        $this->assign('total_price',$cartData['total_price']);
         //载入视图
         $this->display();
     }
 
-    public function cartOrder()
+
+    public function createOrder()
     {
 
+        //判断用户是否已登陆
+        if (!$member_id = get_member_id()) {
+            //将购物车地址生成cookie保存
+            cookie('referer',__SELF__);
+            $this->error('您还未登录',U('Member/login'));
+        }
+
+        //收货人信息
+        //送货方式
+        //支付方式
+        //发票信息
+        //商品清单
+        $data = $this->_model->getOrderBaseInfo();
+        $goods_data = $this->_model->getGoodsData();
         $this->display();
+    }
+
+
+    /**
+     * 修改订单数据
+     * @param $goods_id
+     * @param $amount
+     */
+    public function changeAmount($goods_id,$amount){
+        //执行更改数据方法
+        if ($this->_model->changeCartData($goods_id,$amount) === false) {
+            $this->error(get_error($this->_model->getError));
+        }
+        //返回信息
+        $this->success('修改成功');
     }
 }

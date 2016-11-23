@@ -27,7 +27,9 @@
             <ul>
                 <?php if($member == false): ?><li>您好，欢迎来到京西！[<a href="<?php echo U('Member/login');?>">登录</a>] [<a href="<?php echo U('Member/register');?>">免费注册</a>]</li>
                     <?php else: ?>
-                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li><?php endif; ?>
+                    <li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li>
+                    <li class="line">|</li>
+                    <li><a href="<?php echo U('Member/logout');?>">退出</a></li><?php endif; ?>
                 <li class="line">|</li>
                 <li><a href="">我的订单</a></li>
                 <li class="line">|</li>

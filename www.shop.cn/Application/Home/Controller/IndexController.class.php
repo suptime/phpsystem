@@ -20,17 +20,26 @@ class IndexController extends BaseController
         $this->assign('newGoods',$newGoods);
         $this->assign('bestGoods',$bestGoods);
 
-        //获取文章列表和文章栏目
-        /*$article_cates = M('ArticleCategory')
-            ->alias('ac')
-            ->field('ac.id as cid, arc.id as aid, name,title')
-            ->join("__ARTICLE__ as arc ON ac.id = arc.article_category_id")
-            ->where(array('ac.is_help'=>1,'ac.status'=>1))
-            ->order('ac.sort')
-            ->select();*/
+        //获取banner列表
+        $banners = $this->getBanners();
 
         $this->assign('title',mb_substr(C('WEB_TITLE'),3));
+        $this->assign('banners',$banners);
         $this->display();
+    }
+
+    /**
+     * 获取符合展示条件的轮播图
+     * @return mixed   return array|null
+     */
+    private function getBanners(){
+        $field = 'picture,url,title';
+        $cond = array(
+            is_show => 1,
+            end_time => array('egt',NOW_TIME),
+        );
+        //获取数据
+        return M('Banner')->field($field)->where($cond)->limit(6)->order('sort')->select();
     }
 
 

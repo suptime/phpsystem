@@ -91,7 +91,13 @@ class GoodsModel extends Model
     }
 
 
-
+    /**
+     * 获取当前栏目以及子栏目的商品列表
+     * @param $id   当前栏目id
+     * @param $brand    品牌id
+     * @param $price    价格
+     * @return bool    返回结果 true|false
+     */
     public function getGoodsListData($id,$brand,$price){
 
         $GoodsCategory = D('GoodsCategory');
@@ -125,9 +131,19 @@ class GoodsModel extends Model
             return false;
         }
 
-
         //返回分页和商品列表数据
         return $goodsData;
+    }
+
+
+    /**
+     * 根据商品id数组获取商品列表数据
+     * @param $ids  商品id数组
+     * @return mixed    array|null 成功返回数组,没有返回null
+     */
+    public function getGoodsList($ids){
+        //获取已上架并且在销售的商品
+        return $this->where(array('id'=>array('in',$ids),'status'=>1,'is_on_sale'=>1))->getField('id,name,logo,shop_price');
     }
 
 }

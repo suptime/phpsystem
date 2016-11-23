@@ -51,3 +51,12 @@ function arr2select(array $data, $value_field, $name_field, $form_name, $select_
 function salt_mcrypt($password,$salt){
     return md5(md5($password).$salt);
 }
+
+/**
+ * 将时间转换成时间戳
+ * @param $start_time
+ * @return int
+ */
+function string_to_time($start_time){
+    return strtotime($start_time);
+}

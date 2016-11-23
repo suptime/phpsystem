@@ -104,3 +104,12 @@ function get_member_id(){
         return false;
     }
 }
+
+/**
+ * 将金额格式化
+ * @param $number   数字
+ * @return string   格式化的数据
+ */
+function is_num_format($number){
+    return number_format($number,2,'.','');
+}

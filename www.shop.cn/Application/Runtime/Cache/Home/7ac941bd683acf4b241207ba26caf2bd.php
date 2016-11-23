@@ -31,6 +31,8 @@
 
 						<li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li>
 						<li class="line">|</li>
+						<li><a href="<?php echo U('Member/logout');?>">退出</a></li>
+						<li class="line">|</li>
 						<li><a href="">我的订单</a></li>
 						<li class="line">|</li>
 						<li>客户服务</li><?php endif; ?>
@@ -66,7 +68,7 @@
 								<li>3.成功提交订单</li>
 							</ul>
 						</div>
-						<?php elseif(ACTION_NAME == 'cartOrder'): ?>
+						<?php elseif(ACTION_NAME == 'createOrder'): ?>
 						<div class="flow fr flow2">
 							<ul>
 								<li>1.我的购物车</li>
@@ -95,7 +97,7 @@
 		</div>
 		<div class="success_bd">
 			<p><span></span> 商品已成功加入购物车！&nbsp;<a href="<?php echo U('Cart/cartList');?>">去购物车结算</a> </p>
-			<p class="message">商品成功添加到购物车后，你可以 &nbsp; <a href="<?php echo U('Goods/show',array('id'=>I('get.goods_id')));?>">查看商品详情</a>&nbsp; &nbsp; &nbsp; &nbsp; <a href="/">继续购物</a></p>
+			<p class="message">商品成功添加到购物车后，你可以 &nbsp; &nbsp; &nbsp; &nbsp; <a href="/">继续购物</a></p>
 		</div>
 	</div>
 	<!-- 主体部分 end -->

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>管理中心 - 广告列表 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="__CSS__/general.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/main.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/page.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>
+    <span class="action-span"><a href="{:U('add')}">添加广告</a></span>
+    <span class="action-span1"><a href="#">管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 广告列表 </span>
+    <div style="clear:both"></div>
+</h1>
+<div class="form-div">
+    <form action="{:U()}" name="searchForm" id="searchForm">
+    <img src="__IMG__/icon_search.gif" width="26" height="22" border="0" alt="search" />
+    <input type="text" name="title" value="{:I('get.title')}" size="15" />
+    <input type="submit" value=" 搜索 " class="button" />
+
+    <select name="article_category_id" id="cate" onchange="submitForm();">
+        <option value="0">--选择分类--</option>
+        <foreach name="cates" item="val">
+            <if condition="$val.id eq I('get.article_category_id')">
+                <option value="{$val.id}" selected="selected">{$val.name}</option>
+                <else />
+                <option value="{$val.id}">{$val.name}</option>
+            </if>
+        </foreach>
+    </select>
+    </form>
+</div>
+<form method="post" action="" name="listForm">
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1">
+            <tr>
+                <th>广告编号</th>
+                <th>广告标题</th>
+                <th>排序</th>
+                <th>是否显示</th>
+                <th>开始时间</th>
+                <th>过期时间</th>
+                <th>操作</th>
+            </tr>
+            <volist name="banners" id="val">
+            <tr>
+                <td class="first-cell">{$val.id}</td>
+                <td align="center">{$val.title}</td>
+                <td class="first-cell">{$val.sort}</td>
+                <td align="center"><img src="__IMG__/{$val.is_show}.gif" /></td>
+                <td align="center">{$val.start_time|date="Y-m-d h:i:s",###}</td>
+                <td align="center">{$val.end_time|date="Y-m-d h:i:s",###}</td>
+                <td align="center">
+                <a href="{:U('edit',array('id'=>$val['id']))}" title="编辑">编辑</a> |
+                <a href="{:U('remove',array('id'=>$val['id']))}" title="编辑">移除</a>
+                </td>
+            </tr>
+            </volist>
+            <tr>
+                <td align="right" nowrap="true" colspan="7">
+                    <div class="page">
+                        {$pages}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+<div id="footer">
+版权所有 &copy; {:date('Y-m-d h:i:s',NOW_TIME)}</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript">
+//    $("#cate option[value='{:I(\'get.article_category_id\')}']").prop("selected",true);
+    function submitForm(){
+        document.getElementById("searchForm").submit();//form表单提交
+    }
+</script>
+</body>
+</html>

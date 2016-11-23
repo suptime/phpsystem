@@ -32,6 +32,8 @@
 
 						<li>欢迎回来！<a href="<?php echo U('Member/index');?>"><?php echo ($member["username"]); ?></a>  </li>
 						<li class="line">|</li>
+						<li><a href="<?php echo U('Member/logout');?>">退出</a></li>
+						<li class="line">|</li>
 						<li><a href="">我的订单</a></li>
 						<li class="line">|</li>
 						<li>客户服务</li><?php endif; ?>
@@ -67,7 +69,7 @@
 								<li>3.成功提交订单</li>
 							</ul>
 						</div>
-						<?php elseif(ACTION_NAME == 'cartOrder'): ?>
+						<?php elseif(ACTION_NAME == 'createOrder'): ?>
 						<div class="flow fr flow2">
 							<ul>
 								<li>1.我的购物车</li>
@@ -97,7 +99,6 @@
 			<thead>
 				<tr>
 					<th class="col1">商品名称</th>
-					<th class="col2">商品信息</th>
 					<th class="col3">单价</th>
 					<th class="col4">数量</th>	
 					<th class="col5">小计</th>
@@ -105,52 +106,29 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="col1"><a href=""><img src="images/cart_goods1.jpg" alt="" /></a>  <strong><a href="">【1111购物狂欢节】惠JackJones杰克琼斯纯羊毛菱形格</a></strong></td>
-					<td class="col2"> <p>颜色：073深红</p> <p>尺码：170/92A/S</p> </td>
-					<td class="col3">￥<span>499.00</span></td>
-					<td class="col4"> 
+			<?php if(is_array($cart)): foreach($cart as $key=>$goods): ?><tr>
+					<td class="col1"><a href="<?php echo U('Goods/show',array('id'=>$goods['id']));?>"><img src="<?php if(empty($goods["logo"])): ?>http://www.shop.cn/Public/images/nopic.jpg<?php else: echo C('IMG_PATH'); echo ($goods["logo"]); endif; ?>" alt="" /><strong><?php echo ($goods["name"]); ?></strong></a></td>
+					<td class="col3">￥<span><?php echo ($goods["shop_price"]); ?></span></td>
+					<td class="col4">
 						<a href="javascript:;" class="reduce_num"></a>
-						<input type="text" name="amount" value="1" class="amount"/>
+						<input type="text" name="amount" data-id="<?php echo ($goods["id"]); ?>" value="<?php echo ($goods["amount"]); ?>" class="amount"/>
 						<a href="javascript:;" class="add_num"></a>
 					</td>
-					<td class="col5">￥<span>499.00</span></td>
-					<td class="col6"><a href="">删除</a></td>
-				</tr>
-				<tr>
-					<td class="col1"><a href=""><img src="images/cart_goods2.jpg" alt="" /></a> <strong><a href="">九牧王王正品新款时尚休闲中长款茄克EK01357200</a></strong></td>
-					<td class="col2"> <p>颜色：淡蓝色</p> <p>尺码：165/88</p></td>
-					<td class="col3">￥<span>1102.00</span></td>
-					<td class="col4"> 
-						<a href="javascript:;" class="reduce_num"></a>
-						<input type="text" name="amount" value="1" class="amount"/>
-						<a href="javascript:;" class="add_num"></a>
+					<td class="col5">
+						￥<span><?php echo ($goods["s_total"]); ?></span>
 					</td>
-					<td class="col5">￥<span>1102.00</span></td>
-					<td class="col6"><a href="">删除</a></td>
-				</tr>
-				<tr>
-					<td class="col1"><a href=""><img src="images/cart_goods3.jpg" alt="" /></a> <strong><a href="">【1111购物狂欢节】捷王纯手工缝制休闲男鞋大头皮鞋 头层牛</a></strong></td>
-					<td class="col2"> <p>颜色：0922红棕现货</p> <p>尺码：40现货</p></td>
-					<td class="col3">￥<span>269.00</span></td>
-					<td class="col4"> 
-						<a href="javascript:;" class="reduce_num"></a>
-						<input type="text" name="amount" value="1" class="amount"/>
-						<a href="javascript:;" class="add_num"></a>
-					</td>
-					<td class="col5">￥<span>269.00</span></td>
-					<td class="col6"><a href="">删除</a></td>
-				</tr>
+					<td class="col6"><a href="javascript:void(0);" class="delete">删除</a></td>
+				</tr><?php endforeach; endif; ?>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="6">购物金额总计： <strong>￥ <span id="total">1870.00</span></strong></td>
+					<td colspan="6">购物金额总计： <strong>￥ <span id="total"><?php echo ($total_price); ?></span></strong></td>
 				</tr>
 			</tfoot>
 		</table>
 		<div class="cart_btn w990 bc mt10">
-			<a href="" class="continue">继续购物</a>
-			<a href="" class="checkout">结 算</a>
+			<a href="/" class="continue">继续购物</a>
+			<a href="<?php echo U('Cart/createOrder');?>" class="checkout">结 算</a>
 		</div>
 	</div>
 	<!-- 主体部分 end -->
@@ -186,6 +164,10 @@
 		</p>
 	</div>
 	<!-- 底部版权 end -->
+
+	<script type="text/javascript">
+		var ajax_url = "<?php echo U('changeAmount');?>";
+	</script>
 
 </body>
 </html>

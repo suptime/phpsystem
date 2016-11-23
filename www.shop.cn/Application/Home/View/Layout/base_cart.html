@@ -30,6 +30,8 @@
 
 						<li>欢迎回来！<a href="{:U('Member/index')}">{$member.username}</a>  </li>
 						<li class="line">|</li>
+						<li><a href="{:U('Member/logout')}">退出</a></li>
+						<li class="line">|</li>
 						<li><a href="">我的订单</a></li>
 						<li class="line">|</li>
 						<li>客户服务</li>
@@ -68,7 +70,7 @@
 								<li>3.成功提交订单</li>
 							</ul>
 						</div>
-						<elseif  condition="ACTION_NAME EQ 'cartOrder'"/>
+						<elseif  condition="ACTION_NAME EQ 'createOrder'"/>
 						<div class="flow fr flow2">
 							<ul>
 								<li>1.我的购物车</li>
