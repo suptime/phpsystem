@@ -3246,3 +3246,141 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000986s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001071s ]
 
+[ 2016-11-23T15:41:02+08:00 ] 127.0.0.1 /Member/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000289s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000415s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000451s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `shop_member` [ RunTime:0.0204s ]
+SQL: SELECT * FROM `shop_member` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behaviors\CheckLoginBehavior [ RunTime:0.028170s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.028202s ]
+SQL: SHOW COLUMNS FROM `shop_goods_category` [ RunTime:0.0117s ]
+SQL: SELECT * FROM `shop_goods_category` WHERE ( is_show = 1 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `shop_article_category` [ RunTime:0.0087s ]
+SQL: SELECT * FROM `shop_article_category` WHERE `is_help` = 1 AND `status` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `shop_article` [ RunTime:0.0120s ]
+SQL: SELECT `id`,`article_category_id`,`title` FROM `shop_article` WHERE `status` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000129s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000172s ]
+NOTIC: [8] Undefined variable: title E:\www\shop\www.shop.cn\Application\Runtime\Cache\Home\60edd5336adaceb354e944a0dd5660be.php 第 5 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.072483s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.072530s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000318s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000348s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000688s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000743s ]
+
+[ 2016-11-23T15:48:58+08:00 ] 127.0.0.1 /Member/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000234s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000369s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000407s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `shop_member` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `shop_member` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behaviors\CheckLoginBehavior [ RunTime:0.019017s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019056s ]
+SQL: SHOW COLUMNS FROM `shop_goods_category` [ RunTime:0.0116s ]
+SQL: SELECT * FROM `shop_goods_category` WHERE ( is_show = 1 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `shop_article_category` [ RunTime:0.0092s ]
+SQL: SELECT * FROM `shop_article_category` WHERE `is_help` = 1 AND `status` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `shop_article` [ RunTime:0.0088s ]
+SQL: SELECT `id`,`article_category_id`,`title` FROM `shop_article` WHERE `status` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000129s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000178s ]
+NOTIC: [8] Undefined variable: title E:\www\shop\www.shop.cn\Application\Runtime\Cache\Home\60edd5336adaceb354e944a0dd5660be.php 第 5 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.074980s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.075021s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000323s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000360s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000718s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000776s ]
+
+[ 2016-11-23T15:51:32+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000264s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000359s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000394s ]
+INFO: [ action_begin ] --START--
+INFO: Run Common\Behaviors\CheckLoginBehavior [ RunTime:0.000483s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000520s ]
+SQL: SHOW COLUMNS FROM `shop_goods_category` [ RunTime:0.0147s ]
+SQL: SELECT * FROM `shop_goods_category` WHERE ( is_show = 1 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `shop_article_category` [ RunTime:0.0095s ]
+SQL: SELECT * FROM `shop_article_category` WHERE `is_help` = 1 AND `status` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `shop_article` [ RunTime:0.0079s ]
+SQL: SELECT `id`,`article_category_id`,`title` FROM `shop_article` WHERE `status` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `shop_goods` [ RunTime:0.0094s ]
+SQL: SELECT `id`,`name`,`logo`,`shop_price`,`goods_status` FROM `shop_goods` WHERE `is_on_sale` = 1 AND `goods_status` > 0 AND `stock` > 0 ORDER BY id desc  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`name`,`logo`,`shop_price`,`goods_status` FROM `shop_goods` WHERE `is_on_sale` = 1 AND `goods_status` > 0 AND `stock` > 0 ORDER BY id desc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name`,`logo`,`shop_price`,`goods_status` FROM `shop_goods` WHERE `is_on_sale` = 1 AND `goods_status` > 0 AND `stock` > 0 ORDER BY id desc  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant is_show - assumed 'is_show' E:\www\shop\www.shop.cn\Application\Home\Controller\IndexController.class.php 第 38 行.
+NOTIC: [8] Use of undefined constant end_time - assumed 'end_time' E:\www\shop\www.shop.cn\Application\Home\Controller\IndexController.class.php 第 39 行.
+SQL: SHOW COLUMNS FROM `shop_banner` [ RunTime:0.0084s ]
+SQL: SELECT `picture`,`url`,`title` FROM `shop_banner` WHERE `is_show` = 1 AND `end_time` >= 1479887491 ORDER BY sort LIMIT 6   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000219s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000261s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.127390s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.127436s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000305s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000335s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000817s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000888s ]
+
+[ 2016-11-23T15:51:33+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000244s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000398s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000435s ]
+INFO: [ action_begin ] --START--
+INFO: Run Common\Behaviors\CheckLoginBehavior [ RunTime:0.000434s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000471s ]
+SQL: SHOW COLUMNS FROM `shop_goods_category` [ RunTime:0.0141s ]
+SQL: SELECT * FROM `shop_goods_category` WHERE ( is_show = 1 ) ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `shop_article_category` [ RunTime:0.0086s ]
+SQL: SELECT * FROM `shop_article_category` WHERE `is_help` = 1 AND `status` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `shop_article` [ RunTime:0.0121s ]
+SQL: SELECT `id`,`article_category_id`,`title` FROM `shop_article` WHERE `status` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `shop_goods` [ RunTime:0.0093s ]
+SQL: SELECT `id`,`name`,`logo`,`shop_price`,`goods_status` FROM `shop_goods` WHERE `is_on_sale` = 1 AND `goods_status` > 0 AND `stock` > 0 ORDER BY id desc  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`name`,`logo`,`shop_price`,`goods_status` FROM `shop_goods` WHERE `is_on_sale` = 1 AND `goods_status` > 0 AND `stock` > 0 ORDER BY id desc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name`,`logo`,`shop_price`,`goods_status` FROM `shop_goods` WHERE `is_on_sale` = 1 AND `goods_status` > 0 AND `stock` > 0 ORDER BY id desc  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant is_show - assumed 'is_show' E:\www\shop\www.shop.cn\Application\Home\Controller\IndexController.class.php 第 38 行.
+NOTIC: [8] Use of undefined constant end_time - assumed 'end_time' E:\www\shop\www.shop.cn\Application\Home\Controller\IndexController.class.php 第 39 行.
+SQL: SHOW COLUMNS FROM `shop_banner` [ RunTime:0.0075s ]
+SQL: SELECT `picture`,`url`,`title` FROM `shop_banner` WHERE `is_show` = 1 AND `end_time` >= 1479887492 ORDER BY sort LIMIT 6   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000240s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000279s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.141012s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.141053s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000300s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000340s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000806s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000875s ]
+

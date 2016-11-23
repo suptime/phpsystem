@@ -9,7 +9,12 @@
 namespace Admin\Model;
 
 
-class OrderModel
+use Think\Model;
+
+class OrderModel extends Model
 {
 
+    public function getOrderList($cond){
+
+    }
 }
